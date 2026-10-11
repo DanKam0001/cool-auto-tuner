@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.env
+.env
+.aws/
+*.pem
+benchmarks/raw/
+*.log
+.DS_Store
