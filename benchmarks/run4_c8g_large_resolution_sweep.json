@@ -1,0 +1,222 @@
+{
+  "overall_verdict": "TARGET_MET_SOMEWHERE",
+  "target_speedup": 1.25,
+  "per_resolution": [
+    {
+      "resolution": "480p",
+      "verdict": "TARGET_MET",
+      "baseline_total_seconds_mean": 0.42953307129999985,
+      "best_config": {
+        "threads": -1,
+        "speedup_vs_baseline": 1.355265631140894
+      }
+    },
+    {
+      "resolution": "1080p",
+      "verdict": "TARGET_MET",
+      "baseline_total_seconds_mean": 1.9476765011,
+      "best_config": {
+        "threads": -1,
+        "speedup_vs_baseline": 1.3524435858166106
+      }
+    },
+    {
+      "resolution": "4k",
+      "verdict": "TARGET_MET",
+      "baseline_total_seconds_mean": 7.622743712499982,
+      "best_config": {
+        "threads": -1,
+        "speedup_vs_baseline": 1.3443574611024258
+      }
+    }
+  ],
+  "log": [
+    {
+      "step": "baseline_run",
+      "resolution": "480p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          480,
+          854
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds_mean": {
+          "resize_half": 0.0037793489999998543,
+          "gaussian_blur_15": 0.02409217569999953,
+          "canny_edge": 0.08261718830000006,
+          "orb_detect_compute": 0.29605176480000067,
+          "warp_affine": 0.022992593499999714
+        },
+        "total_seconds_mean": 0.42953307129999985,
+        "resolution_label": "480p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "480p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          480,
+          854
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds_mean": {
+          "resize_half": 0.004150465699999018,
+          "gaussian_blur_15": 0.019168366200000266,
+          "canny_edge": 0.049116374799999106,
+          "orb_detect_compute": 0.20859002969999949,
+          "warp_affine": 0.035911208699999975
+        },
+        "total_seconds_mean": 0.31693644509999785,
+ci-info: no authorized SSH keys fingerprints found for user ubuntu.
+        "resolution_label": "480p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.355265631140894,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "480p",
+      "threads": -1,
+      "speedup": 1.355265631140894,
+      "target": 1.25,
+      "met_target": true
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "1080p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds_mean": {
+          "resize_half": 0.015429639100000258,
+          "gaussian_blur_15": 0.0902237692,
+          "canny_edge": 0.4228154115999999,
+          "orb_detect_compute": 1.3203655795999993,
+          "warp_affine": 0.09884210160000037
+        },
+        "total_seconds_mean": 1.9476765011,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "1080p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds_mean": {
+          "resize_half": 0.019454744700000505,
+          "gaussian_blur_15": 0.06390841620000032,
+          "canny_edge": 0.2520049424999996,
+          "orb_detect_compute": 0.9303408103999999,
+          "warp_affine": 0.17440771770000082
+        },
+        "total_seconds_mean": 1.4401166315000011,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.3524435858166106,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "1080p",
+      "threads": -1,
+      "speedup": 1.3524435858166106,
+      "target": 1.25,
+      "met_target": true
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "4k",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds_mean": {
+          "resize_half": 0.04640125474999479,
+          "gaussian_blur_15": 0.3258860179999985,
+          "canny_edge": 1.7181543052499961,
+          "orb_detect_compute": 5.134062295249997,
+          "warp_affine": 0.39823983924999595
+        },
+        "total_seconds_mean": 7.622743712499982,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "4k",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds_mean": {
+          "resize_half": 0.06371976024999526,
+          "gaussian_blur_15": 0.21434714149999934,
+          "canny_edge": 1.0097329905000052,
+          "orb_detect_compute": 3.705193262249999,
+          "warp_affine": 0.6771830695000034
+        },
+        "total_seconds_mean": 5.670176224000002,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.3443574611024258,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "4k",
+      "threads": -1,
+      "speedup": 1.3443574611024258,
+      "target": 1.25,
+      "met_target": true
+    }
+  ]
+}
