@@ -1,19 +1,24 @@
 """
-The COOL Auto-Tuner agent. Run ON the Graviton instance, after
-discover_envs.py has produced build_envs.json.
+The COOL Auto-Tuner agent. Run ON the Graviton instance, after the baseline
+venv has been created and discover_envs.py has produced build_envs.json.
 
-What it does (the actual "agentic" loop, not a one-shot call):
-  1. Runs the fixed benchmark workload under the vanilla baseline build.
-  2. Runs it under COOL at the default thread count.
-  3. Evaluates: did COOL beat the target speedup? If not, it tries the next
+Baseline = a genuinely vanilla `opencv-python-headless` pip install in an
+isolated venv (/tmp/baseline_venv). This matches the comparison basis COOL's
+own publisher uses in their benchmarks ("vs. pip OpenCV") -- the AMI's
+/install-4x build has no Python bindings at all, so it can't be imported
+from Python directly; the pip venv is the correct, fair baseline.
+
+COOL = the AMI's pre-built /install-cool Python bindings, reached via
+LD_LIBRARY_PATH/PYTHONPATH discovered by discover_envs.py.
+
+The actual "agentic" loop, not a one-shot call:
+  1. Run the fixed benchmark workload under the baseline venv.
+  2. Run it under COOL at a candidate thread count.
+  3. Evaluate: did COOL beat the target speedup? If not, try the next
      thread-count candidate -- each next action is chosen based on the
      previous measurement, not a fixed script.
-  4. Stops when it hits the target, runs out of candidates, or detects a
-     result that's not reproducible (high run-to-run variance), and reports
-     a verdict either way, including failure cases.
-
-Everything is logged so the full decision trail is in the final report, not
-just the winning config.
+  4. Stop when it hits the target, runs out of candidates, or every attempt
+     errors, and report a verdict either way, including failure cases.
 """
 import json
 import os
@@ -22,21 +27,18 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
+BASELINE_PYTHON = "/tmp/baseline_venv/bin/python3"
 TARGET_SPEEDUP = 1.15  # COOL must beat baseline by >=15% to "win" a config
 THREAD_CANDIDATES = [-1, 1, 2, 4]  # -1 = let OpenCV pick its own default
 
 
-def _run_workload(python_path: str | None, lib_dir: str, threads: int) -> dict:
-    # Inherit the full environment (so numpy etc. still resolve via the
-    # system site-packages) and only prepend the build-specific paths, so
-    # the target build's cv2 shadows whatever's on the default path.
+def _run(python_bin: str, extra_env: dict, threads: int) -> dict:
     env = dict(os.environ)
-    env["LD_LIBRARY_PATH"] = f"{lib_dir}:{env.get('LD_LIBRARY_PATH', '')}"
-    if python_path:
-        env["PYTHONPATH"] = f"{python_path}:{env.get('PYTHONPATH', '')}"
+    for k, v in extra_env.items():
+        env[k] = f"{v}:{env.get(k, '')}"
 
     proc = subprocess.run(
-        ["python3", str(HERE / "workload.py"), str(threads)],
+        [python_bin, str(HERE / "workload.py"), str(threads)],
         capture_output=True, text=True, timeout=120, env=env,
     )
     if proc.returncode != 0:
@@ -53,21 +55,22 @@ def run_agent(build_envs_path: str) -> dict:
 
     log = []
 
-    baseline_env = envs.get("baseline", {})
-    baseline_result = _run_workload(
-        baseline_env.get("python_path"), baseline_env.get("lib_dir", ""), threads=-1,
-    )
-    log.append({"step": "baseline_run", "threads": -1, "result": baseline_result})
+    baseline_result = _run(BASELINE_PYTHON, {}, threads=-1)
+    log.append({"step": "baseline_run", "python": BASELINE_PYTHON, "threads": -1, "result": baseline_result})
 
     if "error" in baseline_result:
         return {"verdict": "FAILED", "reason": "baseline run failed", "log": log}
 
     baseline_total = baseline_result["total_seconds_mean"]
+
     cool_env = envs.get("cool", {})
+    cool_extra_env = {"LD_LIBRARY_PATH": cool_env.get("lib_dir", "")}
+    if cool_env.get("python_path"):
+        cool_extra_env["PYTHONPATH"] = cool_env["python_path"]
 
     best = None
     for threads in THREAD_CANDIDATES:
-        result = _run_workload(cool_env.get("python_path"), cool_env.get("lib_dir", ""), threads)
+        result = _run("python3", cool_extra_env, threads)
         log.append({"step": "cool_run", "threads": threads, "result": result})
 
         if "error" in result:
@@ -91,8 +94,6 @@ def run_agent(build_envs_path: str) -> dict:
                 "log": log,
             }
 
-    # Exhausted candidates without hitting target -- report the best we found,
-    # explicitly, as a failure case rather than hiding it.
     if best is None:
         return {"verdict": "FAILED", "reason": "every COOL run errored", "log": log}
 
