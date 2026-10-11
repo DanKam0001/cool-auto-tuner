@@ -286,6 +286,7 @@ if __name__ == "__main__":
     print("===AGENT_REPORT_END===")
 PYEOF
 echo "===SETUP_START==="
+pip install --break-system-packages -q numpy 2>&1 | tail -5
 python3 -m venv /tmp/baseline_venv
 /tmp/baseline_venv/bin/pip install -q numpy opencv-python-headless 2>&1 | tail -10
 cd /tmp/agent
