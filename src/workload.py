@@ -1,11 +1,7 @@
 """
 Defines the benchmark workload: a fixed set of OpenCV operations run against
 a fixed set of synthetic test images, timed identically regardless of which
-OpenCV build (vanilla /install-4x vs COOL /install-cool) is active on
-LD_LIBRARY_PATH / PYTHONPATH.
-
-Kept deliberately simple and dependency-light (numpy + cv2 only) so it runs
-unmodified under either build.
+OpenCV build (vanilla pip baseline vs COOL) is active.
 """
 import time
 import numpy as np
@@ -14,6 +10,22 @@ import cv2
 # Fixed seed so every run (baseline, COOL, every iteration) uses identical
 # input data -- the only thing allowed to vary is which OpenCV build runs it.
 _RNG = np.random.default_rng(seed=42)
+
+# Shared single source of truth for resolution tiers, so agent.py and
+# workload.py always agree on what e.g. "1080p" means.
+RESOLUTIONS = {
+    "480p": (480, 854),
+    "1080p": (1080, 1920),
+    "4k": (2160, 3840),
+}
+
+# Heavier resolutions get fewer repeats so a single run stays a reasonable
+# length -- still enough repeats to average out noise.
+REPEATS_BY_RESOLUTION = {
+    "480p": 10,
+    "1080p": 10,
+    "4k": 4,
+}
 
 
 def _make_test_images(n: int, size: tuple[int, int]) -> list[np.ndarray]:
@@ -30,12 +42,11 @@ def _time_op(fn, *args, repeats: int, **kwargs) -> float:
     return (time.perf_counter() - start) / repeats
 
 
-def run_workload(image_size: tuple[int, int] = (1080, 1920), n_images: int = 20,
-                  repeats: int = 10) -> dict:
+def run_workload(image_size: tuple[int, int], n_images: int, repeats: int) -> dict:
     """
     Runs a fixed suite of common OpenCV ops and returns per-op mean latency
     (seconds) plus metadata about what was run, so results are comparable
-    and reproducible across builds/instances.
+    and reproducible across builds/instances/resolutions.
     """
     images = _make_test_images(n_images, image_size)
     gray_images = [cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in images]
@@ -89,10 +100,16 @@ if __name__ == "__main__":
     import sys
 
     threads = int(sys.argv[1]) if len(sys.argv) > 1 else -1
+    resolution = sys.argv[2] if len(sys.argv) > 2 else "1080p"
+
     if threads > 0:
         cv2.setNumThreads(threads)
 
-    result = run_workload()
+    size = RESOLUTIONS[resolution]
+    repeats = REPEATS_BY_RESOLUTION[resolution]
+
+    result = run_workload(image_size=size, n_images=20, repeats=repeats)
+    result["resolution_label"] = resolution
     result["cv2_num_threads_requested"] = threads
     result["cv2_num_threads_actual"] = cv2.getNumThreads()
     print(json.dumps(result))

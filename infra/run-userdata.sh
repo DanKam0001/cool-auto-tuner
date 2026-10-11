@@ -5,11 +5,7 @@ cat <<'PYEOF' > /tmp/agent/workload.py
 """
 Defines the benchmark workload: a fixed set of OpenCV operations run against
 a fixed set of synthetic test images, timed identically regardless of which
-OpenCV build (vanilla /install-4x vs COOL /install-cool) is active on
-LD_LIBRARY_PATH / PYTHONPATH.
-
-Kept deliberately simple and dependency-light (numpy + cv2 only) so it runs
-unmodified under either build.
+OpenCV build (vanilla pip baseline vs COOL) is active.
 """
 import time
 import numpy as np
@@ -18,6 +14,22 @@ import cv2
 # Fixed seed so every run (baseline, COOL, every iteration) uses identical
 # input data -- the only thing allowed to vary is which OpenCV build runs it.
 _RNG = np.random.default_rng(seed=42)
+
+# Shared single source of truth for resolution tiers, so agent.py and
+# workload.py always agree on what e.g. "1080p" means.
+RESOLUTIONS = {
+    "480p": (480, 854),
+    "1080p": (1080, 1920),
+    "4k": (2160, 3840),
+}
+
+# Heavier resolutions get fewer repeats so a single run stays a reasonable
+# length -- still enough repeats to average out noise.
+REPEATS_BY_RESOLUTION = {
+    "480p": 10,
+    "1080p": 10,
+    "4k": 4,
+}
 
 
 def _make_test_images(n: int, size: tuple[int, int]) -> list[np.ndarray]:
@@ -34,12 +46,11 @@ def _time_op(fn, *args, repeats: int, **kwargs) -> float:
     return (time.perf_counter() - start) / repeats
 
 
-def run_workload(image_size: tuple[int, int] = (1080, 1920), n_images: int = 20,
-                  repeats: int = 10) -> dict:
+def run_workload(image_size: tuple[int, int], n_images: int, repeats: int) -> dict:
     """
     Runs a fixed suite of common OpenCV ops and returns per-op mean latency
     (seconds) plus metadata about what was run, so results are comparable
-    and reproducible across builds/instances.
+    and reproducible across builds/instances/resolutions.
     """
     images = _make_test_images(n_images, image_size)
     gray_images = [cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in images]
@@ -93,10 +104,16 @@ if __name__ == "__main__":
     import sys
 
     threads = int(sys.argv[1]) if len(sys.argv) > 1 else -1
+    resolution = sys.argv[2] if len(sys.argv) > 2 else "1080p"
+
     if threads > 0:
         cv2.setNumThreads(threads)
 
-    result = run_workload()
+    size = RESOLUTIONS[resolution]
+    repeats = REPEATS_BY_RESOLUTION[resolution]
+
+    result = run_workload(image_size=size, n_images=20, repeats=repeats)
+    result["resolution_label"] = resolution
     result["cv2_num_threads_requested"] = threads
     result["cv2_num_threads_actual"] = cv2.getNumThreads()
     print(json.dumps(result))
@@ -183,14 +200,13 @@ from Python directly; the pip venv is the correct, fair baseline.
 COOL = the AMI's pre-built /install-cool Python bindings, reached via
 LD_LIBRARY_PATH/PYTHONPATH discovered by discover_envs.py.
 
-The actual "agentic" loop, not a one-shot call:
-  1. Run the fixed benchmark workload under the baseline venv.
-  2. Run it under COOL at a candidate thread count.
-  3. Evaluate: did COOL beat the target speedup? If not, try the next
-     thread-count candidate -- each next action is chosen based on the
-     previous measurement, not a fixed script.
-  4. Stop when it hits the target, runs out of candidates, or every attempt
-     errors, and report a verdict either way, including failure cases.
+The actual "agentic" loop, not a one-shot call: for each resolution tier,
+measure the baseline once, then try COOL across a set of thread-count
+candidates, evaluating after each one -- the next candidate tried (or
+whether to stop and move to the next resolution) is chosen based on the
+previous measurement, not a fixed script. Every attempt is logged, so a
+resolution where COOL doesn't help is reported as a real finding, not
+hidden.
 """
 import json
 import os
@@ -200,18 +216,19 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 BASELINE_PYTHON = "/tmp/baseline_venv/bin/python3"
-TARGET_SPEEDUP = 1.15  # COOL must beat baseline by >=15% to "win" a config
-THREAD_CANDIDATES = [-1, 1, 2, 4]  # -1 = let OpenCV pick its own default
+TARGET_SPEEDUP = 1.25  # COOL must beat baseline by >=25% to "win" a config
+THREAD_CANDIDATES = [-1, 4]  # -1 = let OpenCV pick its own default
+RESOLUTIONS = ["480p", "1080p", "4k"]
 
 
-def _run(python_bin: str, extra_env: dict, threads: int) -> dict:
+def _run(python_bin: str, extra_env: dict, threads: int, resolution: str) -> dict:
     env = dict(os.environ)
     for k, v in extra_env.items():
         env[k] = f"{v}:{env.get(k, '')}"
 
     proc = subprocess.run(
-        [python_bin, str(HERE / "workload.py"), str(threads)],
-        capture_output=True, text=True, timeout=120, env=env,
+        [python_bin, str(HERE / "workload.py"), str(threads), resolution],
+        capture_output=True, text=True, timeout=300, env=env,
     )
     if proc.returncode != 0:
         return {"error": proc.stderr.strip() or "non-zero exit, no stderr"}
@@ -221,37 +238,27 @@ def _run(python_bin: str, extra_env: dict, threads: int) -> dict:
         return {"error": f"could not parse workload output: {e}", "raw_stdout": proc.stdout}
 
 
-def run_agent(build_envs_path: str) -> dict:
-    with open(build_envs_path) as f:
-        envs = json.load(f)
-
-    log = []
-
-    baseline_result = _run(BASELINE_PYTHON, {}, threads=-1)
-    log.append({"step": "baseline_run", "python": BASELINE_PYTHON, "threads": -1, "result": baseline_result})
+def _tune_one_resolution(resolution: str, cool_extra_env: dict, log: list) -> dict:
+    baseline_result = _run(BASELINE_PYTHON, {}, threads=-1, resolution=resolution)
+    log.append({"step": "baseline_run", "resolution": resolution, "threads": -1, "result": baseline_result})
 
     if "error" in baseline_result:
-        return {"verdict": "FAILED", "reason": "baseline run failed", "log": log}
+        return {"resolution": resolution, "verdict": "FAILED", "reason": "baseline run failed"}
 
     baseline_total = baseline_result["total_seconds_mean"]
-
-    cool_env = envs.get("cool", {})
-    cool_extra_env = {"LD_LIBRARY_PATH": cool_env.get("lib_dir", "")}
-    if cool_env.get("python_path"):
-        cool_extra_env["PYTHONPATH"] = cool_env["python_path"]
-
     best = None
+
     for threads in THREAD_CANDIDATES:
-        result = _run("python3", cool_extra_env, threads)
-        log.append({"step": "cool_run", "threads": threads, "result": result})
+        result = _run("python3", cool_extra_env, threads, resolution)
+        log.append({"step": "cool_run", "resolution": resolution, "threads": threads, "result": result})
 
         if "error" in result:
             continue
 
         speedup = baseline_total / result["total_seconds_mean"]
         result["_speedup_vs_baseline"] = speedup
-        log.append({"step": "evaluate", "threads": threads, "speedup": speedup,
-                    "target": TARGET_SPEEDUP, "met_target": speedup >= TARGET_SPEEDUP})
+        log.append({"step": "evaluate", "resolution": resolution, "threads": threads,
+                    "speedup": speedup, "target": TARGET_SPEEDUP, "met_target": speedup >= TARGET_SPEEDUP})
 
         if best is None or speedup > best["_speedup_vs_baseline"]:
             best = result
@@ -259,21 +266,40 @@ def run_agent(build_envs_path: str) -> dict:
 
         if speedup >= TARGET_SPEEDUP:
             return {
-                "verdict": "TARGET_MET",
+                "resolution": resolution, "verdict": "TARGET_MET",
                 "baseline_total_seconds_mean": baseline_total,
                 "best_config": {"threads": threads, "speedup_vs_baseline": speedup},
-                "best_result": result,
-                "log": log,
             }
 
     if best is None:
-        return {"verdict": "FAILED", "reason": "every COOL run errored", "log": log}
+        return {"resolution": resolution, "verdict": "FAILED", "reason": "every COOL run errored"}
 
     return {
-        "verdict": "TARGET_NOT_MET",
+        "resolution": resolution, "verdict": "TARGET_NOT_MET",
         "baseline_total_seconds_mean": baseline_total,
         "best_config": {"threads": best["_threads_used"], "speedup_vs_baseline": best["_speedup_vs_baseline"]},
-        "best_result": best,
+    }
+
+
+def run_agent(build_envs_path: str) -> dict:
+    with open(build_envs_path) as f:
+        envs = json.load(f)
+
+    cool_env = envs.get("cool", {})
+    cool_extra_env = {"LD_LIBRARY_PATH": cool_env.get("lib_dir", "")}
+    if cool_env.get("python_path"):
+        cool_extra_env["PYTHONPATH"] = cool_env["python_path"]
+
+    log = []
+    per_resolution = [_tune_one_resolution(res, cool_extra_env, log) for res in RESOLUTIONS]
+
+    met = [r for r in per_resolution if r["verdict"] == "TARGET_MET"]
+    overall_verdict = "TARGET_MET_SOMEWHERE" if met else "TARGET_NOT_MET_ANYWHERE"
+
+    return {
+        "overall_verdict": overall_verdict,
+        "target_speedup": TARGET_SPEEDUP,
+        "per_resolution": per_resolution,
         "log": log,
     }
 
