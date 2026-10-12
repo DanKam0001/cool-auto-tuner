@@ -3,6 +3,7 @@ Defines the benchmark workload: a fixed set of OpenCV operations run against
 a fixed set of synthetic test images, timed identically regardless of which
 OpenCV build (vanilla pip baseline vs COOL) is active.
 """
+import statistics
 import time
 import numpy as np
 import cv2
@@ -20,7 +21,7 @@ RESOLUTIONS = {
 }
 
 # Heavier resolutions get fewer repeats so a single run stays a reasonable
-# length -- still enough repeats to average out noise.
+# length -- still enough repeats to report a meaningful standard deviation.
 REPEATS_BY_RESOLUTION = {
     "480p": 10,
     "1080p": 10,
@@ -33,20 +34,28 @@ def _make_test_images(n: int, size: tuple[int, int]) -> list[np.ndarray]:
     return [_RNG.integers(0, 256, (h, w, 3), dtype=np.uint8) for _ in range(n)]
 
 
-def _time_op(fn, *args, repeats: int, **kwargs) -> float:
-    """Returns mean seconds per call over `repeats` runs, after one warmup call."""
-    fn(*args, **kwargs)  # warmup, not timed
-    start = time.perf_counter()
+def _time_op(fn, *args, repeats: int, **kwargs) -> dict:
+    """Returns {mean, std, n} seconds per call over `repeats` timed runs, after
+    one warmup call (not timed, not counted)."""
+    fn(*args, **kwargs)  # warmup
+    samples = []
     for _ in range(repeats):
+        start = time.perf_counter()
         fn(*args, **kwargs)
-    return (time.perf_counter() - start) / repeats
+        samples.append(time.perf_counter() - start)
+    return {
+        "mean": statistics.mean(samples),
+        "std": statistics.stdev(samples) if len(samples) > 1 else 0.0,
+        "n": len(samples),
+    }
 
 
 def run_workload(image_size: tuple[int, int], n_images: int, repeats: int) -> dict:
     """
-    Runs a fixed suite of common OpenCV ops and returns per-op mean latency
-    (seconds) plus metadata about what was run, so results are comparable
-    and reproducible across builds/instances/resolutions.
+    Runs a fixed suite of common OpenCV ops and returns per-op timing stats
+    (mean + standard deviation, not just a single number) plus metadata
+    about what was run, so results are comparable, reproducible, and
+    honestly report their own noise across builds/instances/resolutions.
     """
     images = _make_test_images(n_images, image_size)
     gray_images = [cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in images]
@@ -84,14 +93,19 @@ def run_workload(image_size: tuple[int, int], n_images: int, repeats: int) -> di
         repeats=repeats,
     )
 
+    total_mean = sum(r["mean"] for r in results.values())
+    # Standard deviations of independent sums add in quadrature.
+    total_std = sum(r["std"] ** 2 for r in results.values()) ** 0.5
+
     return {
         "opencv_version": cv2.__version__,
         "opencv_build_path": cv2.__file__,
         "image_size": image_size,
         "n_images": n_images,
         "repeats": repeats,
-        "ops_seconds_mean": results,
-        "total_seconds_mean": sum(results.values()),
+        "ops_seconds": results,
+        "total_seconds_mean": total_mean,
+        "total_seconds_std": total_std,
     }
 
 
