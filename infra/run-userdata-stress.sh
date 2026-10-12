@@ -334,4 +334,6 @@ cd /tmp/agent
 python3 discover_envs.py | tee /tmp/agent/discover_output.txt
 python3 -c "import json,re; txt=open(\"/tmp/agent/discover_output.txt\").read(); start=txt.index(\"{\"); end=txt.rindex(\"}\")+1; json.dump(json.loads(txt[start:end]), open(\"/tmp/agent/build_envs.json\",\"w\"))"
 echo "===SETUP_END==="
-python3 agent.py /tmp/agent/build_envs.json 1.6
+timeout 280 python3 agent.py /tmp/agent/build_envs.json 1.6
+echo "===INSTANCE_SELF_SHUTDOWN==="
+shutdown -h now
