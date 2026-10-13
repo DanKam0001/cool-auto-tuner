@@ -18,8 +18,12 @@ This targets two award categories:
 
 ## Status
 
-Scaffolding in progress. See `docs/PLAN.md` for the build plan and `infra/` for the AWS
-Graviton provisioning scripts.
+Core build complete: agent code, AWS infra scripts, 10 independent benchmark runs plus
+a stress-test sweep, full technical report, and a video script. See
+[`docs/REPORT.md`](docs/REPORT.md) for the real results (COOL is ~36% faster than
+baseline OpenCV 5.0.0, consistent across 480p/1080p/4K) and
+[`docs/VIDEO_SCRIPT.md`](docs/VIDEO_SCRIPT.md) for the demo script. Remaining: record
+the demo video, final repo cleanup, Devpost submission.
 
 ## Repo layout
 
