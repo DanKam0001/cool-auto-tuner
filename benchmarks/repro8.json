@@ -1,0 +1,383 @@
+{
+  "overall_verdict": "TARGET_MET_SOMEWHERE",
+  "target_speedup": 1.25,
+  "per_resolution": [
+    {
+      "resolution": "480p",
+      "verdict": "TARGET_MET",
+      "baseline_total_seconds_mean": 0.4287253857999985,
+      "best_config": {
+ci-info: no authorized SSH keys fingerprints found for user ubuntu.
+        "threads": -1,
+        "speedup_vs_baseline": 1.35169631473333
+      }
+    },
+    {
+      "resolution": "1080p",
+      "verdict": "TARGET_MET",
+      "baseline_total_seconds_mean": 1.938263503999997,
+      "best_config": {
+        "threads": -1,
+        "speedup_vs_baseline": 1.3461779728624401
+      }
+    },
+    {
+      "resolution": "4k",
+      "verdict": "TARGET_MET",
+      "baseline_total_seconds_mean": 7.651023490000014,
+      "best_config": {
+        "threads": -1,
+        "speedup_vs_baseline": 1.3499229875468424
+      }
+    }
+  ],
+  "log": [
+    {
+      "step": "baseline_run",
+      "resolution": "480p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          480,
+          854
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.0036794522999997526,
+            "std": 0.0007942954082282639,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.023386413699998342,
+            "std": 0.00016518833873457018,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.08251141700000061,
+            "std": 0.00017672352019038528,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 0.29691219989999806,
+            "std": 0.0002067831572656601,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.02223590290000175,
+            "std": 5.638108384170652e-05,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 0.4287253857999985,
+        "total_seconds_std": 0.0008575323236582941,
+        "resolution_label": "480p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "480p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          480,
+          854
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.004073675600000115,
+            "std": 3.712606958320566e-05,
+            "n": 10
+          },
+<14>Oct 13 04:43:33 cloud-init: #############################################################
+<14>Oct 13 04:43:33 cloud-init: -----BEGIN SSH HOST KEY FINGERPRINTS-----
+<14>Oct 13 04:43:33 cloud-init: 256 SHA256:4tGn6EJo/frICWBsBGBK4cg+WMeb9DmjHqKIGZQhBo0 root@ip-172-31-34-169 (ECDSA)
+<14>Oct 13 04:43:33 cloud-init: 256 SHA256:3QtGr2wAsLLP58T7RjjRL/qP6LS0oRIfC0aZmjpxsQc root@ip-172-31-34-169 (ED25519)
+<14>Oct 13 04:43:33 cloud-init: 3072 SHA256:iTYmtX8QB0ttqhSv2BLNdm3hdUElF830H/TShorO278 root@ip-172-31-34-169 (RSA)
+<14>Oct 13 04:43:33 cloud-init: -----END SSH HOST KEY FINGERPRINTS-----
+<14>Oct 13 04:43:33 cloud-init: #############################################################
+-----BEGIN SSH HOST KEY KEYS-----
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEEXXruPAC8AFvodn8TKfqBGjYKBQAbgYBfnb/Np+893OHYqqpjZrVnxMBCSkU5528eDsC3Bh8O4jnlF8pjqGAs= root@ip-172-31-34-169
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHvQzxBzLD0NPaTgPCDQB0Z/bamOxYafKoYUz3KBYB5S root@ip-172-31-34-169
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC210/sbcVUh2TIxLBWpJ5HmKS7qbHkthRrvUk8HGXVCCFK/cuXh8nw/ymDvOUab9mpWPzPIpKsHxJDE40hctsKtIwc0iSkuZW5CTVleQim/mINVXV2G4YP8MyTVOCt/NfJcaop5I54d8+eUG0fIbyCeF5EGRSBANM/vDYDEJDk4pPJOuVyi2rvhE5xbJ2nJQIYVjvDQEdlRgy/Vmjg6uYubn4IpMfyhck8dKTunVPXg87C/a/XaljhR4Y0yHJVE671aWH1utEV0H8NGBMkQJaSsj0NwuL6EpzNecwGjAWxTqnj6ZZZ77r8Rh2qhHdUq02Mv5Mr6995bjv6Otm9E5CdMsdtiFiGiguiJPl9Y6tMV7JNAKSq9Exz0jBT/wKsIZlD57twJ9F3lcIOuJbfZB1RBOufo+Urrb6uJV9EA9PILjIoPp6LtIM9jMMSXQnz4IXwEOsOYjPn6MbdAvVZXOBYEyq18Hill/7DNDtQqgKNf2UeTZ5YGUjx9Np2NTaW5YM= root@ip-172-31-34-169
+-----END SSH HOST KEY KEYS-----
+          "gaussian_blur_15": {
+            "mean": 0.018787359200001675,
+            "std": 6.880777795681719e-05,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.048970314200001044,
+            "std": 5.892750792665824e-05,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 0.20981216200000005,
+            "std": 0.0002791381709560455,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.03553230809999945,
+            "std": 9.585793843321224e-05,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 0.31717581910000237,
+        "total_seconds_std": 0.0003109536450756769,
+        "resolution_label": "480p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.35169631473333,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "480p",
+      "threads": -1,
+      "speedup": 1.35169631473333,
+      "target": 1.25,
+      "met_target": true
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "1080p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.015295493399997894,
+            "std": 0.00012251521673368792,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.08976341350000042,
+            "std": 0.00011439052457414775,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.41897093899999904,
+            "std": 0.0005078122336239351,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 1.3131395838999993,
+            "std": 0.00036516459466882413,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.10109407420000024,
+            "std": 0.00016999808679018827,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 1.938263503999997,
+        "total_seconds_std": 0.0006694870915661872,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "1080p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.019143326599999,
+            "std": 0.0001098883720831116,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.0633891174999988,
+            "std": 0.00019476198989555932,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.2520603208000011,
+            "std": 0.0015076771328079203,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 0.9322802591999974,
+            "std": 0.0006256231397643556,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.17295405900000277,
+            "std": 0.00016517350714496384,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 1.439827083099999,
+        "total_seconds_std": 0.0016558335134578728,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+[[0;32m  OK  [0m] Stopped [0;1;39munattended-upgrades.service[0m - Unattended Upgrades Shutdown.
+        "_speedup_vs_baseline": 1.3461779728624401,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "1080p",
+      "threads": -1,
+      "speedup": 1.3461779728624401,
+      "target": 1.25,
+      "met_target": true
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "4k",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.04551071175000487,
+            "std": 2.93817150555517e-05,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.3256643095000129,
+            "std": 0.0002710903945546372,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.7195923590000035,
+            "std": 0.0006693594797378376,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 5.164848695249994,
+            "std": 0.0020408121195741825,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.3954074144999993,
+            "std": 0.00011701098502520868,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 7.651023490000014,
+        "total_seconds_std": 0.002168179208075693,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "4k",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.06361343724999102,
+            "std": 0.00012916363464271561,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.2129820327499985,
+            "std": 0.0004940483459079136,
+            "n": 4
+          },
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-modprobe.slice[0m - Slice /system/modprobe.
+          "canny_edge": {
+[[0;32m  OK  [0m] Stopped target [0;1;39mgraphical.target[0m - Graphical Interface.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtimers.target[0m - Timer Units.
+            "mean": 1.0085284572500015,
+            "std": 0.0010219421036611355,
+            "n": 4
+          },
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+          "orb_detect_compute": {
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Stopped [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Stopped [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Stopped [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Stopped [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Stopped [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Stopped [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Stopped [0;1;39mmotd-news.timer[0m - Message of the Day.
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat-collect.timer[0m - Ru…y accounting tool every 10 minutes.
+            "mean": 3.7072053622500007,
+            "std": 0.0033012595289055547,
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat-summary.timer[0m - Ge… of yesterday's process accounting.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
+[[0;32m  OK  [0m] Stopped [0;1;39mupdate-notifier-download.t…[0mhat failed at package install time.
+[[0;32m  OK  [0m] Stopped [0;1;39mupdate-notifier-motd.timer[0m… a new version of Ubuntu available.
+[[0;32m  OK  [0m] Closed [0;1;39mcloud-init-hotplugd.socket[0m - cloud-init hotplug hook socket.
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.6754188417499947,
+[[0;32m  OK  [0m] Closed [0;1;39mlvm2-lvmpolld.socket[0m - LVM2 poll daemon socket.
+            "std": 0.0009963751959851867,
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-rfkill.socket[0m - Loa…ll Switch Status /dev/rfkill Watch.
+         Stopping [0;1;39macpid.service[0m - ACPI event daemon...
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 5.667748131249986,
+        "total_seconds_std": 0.003632658900063155,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.3499229875468424,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "4k",
+      "threads": -1,
+      "speedup": 1.3499229875468424,
+      "target": 1.25,
+      "met_target": true
+    }
+  ]
+}
