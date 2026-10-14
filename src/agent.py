@@ -11,9 +11,10 @@ from Python directly; the pip venv is the correct, fair baseline.
 COOL = the AMI's pre-built /install-cool Python bindings, reached via
 LD_LIBRARY_PATH/PYTHONPATH discovered by discover_envs.py.
 
-The actual "agentic" loop, not a one-shot call: for each resolution tier,
-measure the baseline once, then try COOL across a set of thread-count
-candidates, evaluating after each one -- the next candidate tried (or
+The actual "agentic" loop, not a one-shot call: for each resolution tier, try
+COOL across a set of thread-count candidates, re-measuring baseline AT THE
+SAME thread count each time (so a thread-count effect on baseline itself
+isn't mistaken for a COOL-specific effect) -- the next candidate tried (or
 whether to stop and move to the next resolution) is chosen based on the
 previous measurement, not a fixed script. Every attempt is logged, so a
 resolution where COOL doesn't help is reported as a real finding, not
@@ -50,16 +51,21 @@ def _run(python_bin: str, extra_env: dict, threads: int, resolution: str) -> dic
 
 
 def _tune_one_resolution(resolution: str, cool_extra_env: dict, log: list, target_speedup: float) -> dict:
-    baseline_result = _run(BASELINE_PYTHON, {}, threads=-1, resolution=resolution)
-    log.append({"step": "baseline_run", "resolution": resolution, "threads": -1, "result": baseline_result})
-
-    if "error" in baseline_result:
-        return {"resolution": resolution, "verdict": "FAILED", "reason": "baseline run failed"}
-
-    baseline_total = baseline_result["total_seconds_mean"]
+    # Baseline is re-run at the SAME thread count as each COOL candidate --
+    # comparing COOL-at-N-threads only makes sense against baseline-at-N-threads.
+    # Comparing against a single default-threads baseline would conflate "COOL
+    # got worse" with "fewer cores is slower for any code," which isn't a
+    # COOL-specific finding at all.
     best = None
 
     for threads in THREAD_CANDIDATES:
+        baseline_result = _run(BASELINE_PYTHON, {}, threads, resolution)
+        log.append({"step": "baseline_run", "resolution": resolution, "threads": threads, "result": baseline_result})
+
+        if "error" in baseline_result:
+            continue
+        baseline_total = baseline_result["total_seconds_mean"]
+
         result = _run("python3", cool_extra_env, threads, resolution)
         log.append({"step": "cool_run", "resolution": resolution, "threads": threads, "result": result})
 
@@ -68,6 +74,7 @@ def _tune_one_resolution(resolution: str, cool_extra_env: dict, log: list, targe
 
         speedup = baseline_total / result["total_seconds_mean"]
         result["_speedup_vs_baseline"] = speedup
+        result["_baseline_total_seconds_mean"] = baseline_total
         log.append({"step": "evaluate", "resolution": resolution, "threads": threads,
                     "speedup": speedup, "target": target_speedup, "met_target": speedup >= target_speedup})
 
@@ -83,11 +90,11 @@ def _tune_one_resolution(resolution: str, cool_extra_env: dict, log: list, targe
             }
 
     if best is None:
-        return {"resolution": resolution, "verdict": "FAILED", "reason": "every COOL run errored"}
+        return {"resolution": resolution, "verdict": "FAILED", "reason": "every run errored"}
 
     return {
         "resolution": resolution, "verdict": "TARGET_NOT_MET",
-        "baseline_total_seconds_mean": baseline_total,
+        "baseline_total_seconds_mean": best["_baseline_total_seconds_mean"],
         "best_config": {"threads": best["_threads_used"], "speedup_vs_baseline": best["_speedup_vs_baseline"]},
     }
 
