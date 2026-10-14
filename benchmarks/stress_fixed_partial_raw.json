@@ -1,0 +1,1007 @@
+init[1388]:       "step": "cool_run",
+      "resolution": "480p",
+      "threads": 4,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          480,
+          854
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.004261760100004608,
+            "std": 4.3444931714400374e-05,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.015340213600001106,
+            "std": 0.0019233989078317145,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.04792876969999895,
+            "std": 6.86305530159633e-05,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 0.21779321320000236,
+            "std": 0.0016758111920547197,
+[[0;32m  OK  [0m] Stopped [0;1;39mudisks2.service[0m - Disk Manager.
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.032539953899998864,
+            "std": 0.00020436032478133255,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 0.3178639105000059,
+        "total_seconds_std": 0.0025605013702999207,
+        "resolution_label": "480p",
+        "cv2_num_threads_requested": 4,
+        "cv2_num_threads_actual": 4,
+        "_speedup_vs_baseline": 1.360861135885361,
+        "_baseline_total_seconds_mean": 0.4325686423000008,
+        "_threads_used": 4
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "480p",
+      "threads": 4,
+      "speedup": 1.360861135885361,
+      "target": 1.6,
+      "met_target": false
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "1080p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.01562087879999865,
+            "std": 0.00022024512562344634,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.09114726820000385,
+            "std": 0.00026812619953437355,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.42146324279999875,
+            "std": 0.001489533693392823,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 1.318762648500001,
+            "std": 0.002741823164022193,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.10201315979999492,
+            "std": 0.00025408658049124995,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 1.9490071980999972,
+        "total_seconds_std": 0.003149803875028492,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "1080p",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.020295023800008492,
+            "std": 0.0005541468486535855,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.065292778999995,
+            "std": 0.0002754870996078048,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.2528693206999918,
+            "std": 0.0010601702301737382,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 0.9369199832000049,
+            "std": 0.0017317668016900026,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.1746892651000053,
+            "std": 0.0005026749683769291,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 1.4500663718000055,
+        "total_seconds_std": 0.0021814286988434952,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.3440813717241393,
+        "_baseline_total_seconds_mean": 1.9490071980999972,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "1080p",
+      "threads": -1,
+      "speedup": 1.3440813717241393,
+      "target": 1.6,
+      "met_target": false
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "1080p",
+      "threads": 1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+Received signal 15 resulting in exit. Cause:
+  Filename: /usr/lib/python3.12/selectors.py
+  Function: select
+  Line number: 415
+    Filename: /usr/lib/python3.12/subprocess.py
+    Function: _communicate
+    Line number: 2115
+      Filename: /usr/lib/python3.12/subprocess.py
+      Function: communicate
+      Line number: 1209
+            "mean": 0.026015992200001392,
+            "std": 0.00018772087048861673,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.15998881269999857,
+            "std": 0.0009471358873394148,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.849820038499999,
+            "std": 0.0012841852043101872,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 1.4133557737000018,
+            "std": 0.0026549003111079024,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.1953823896000074,
+            "std": 0.000318084471743661,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 2.6445630067000083,
+        "total_seconds_std": 0.0031194727994258427,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": 1,
+        "cv2_num_threads_actual": 1
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "1080p",
+      "threads": 1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.034375822399996994,
+            "std": 0.0008628074746757128,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.11148942690000183,
+            "std": 0.0010207954604809155,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.4908888049999973,
+            "std": 0.004033019142733367,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 1.4515835073999939,
+            "std": 0.0030032444469049262,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.3286816701999925,
+            "std": 0.0010676040257940023,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 2.4170192318999826,
+        "total_seconds_std": 0.005311398975778919,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": 1,
+        "cv2_num_threads_actual": 1,
+        "_speedup_vs_baseline": 1.094142310411472,
+        "_baseline_total_seconds_mean": 2.6445630067000083
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "1080p",
+      "threads": 1,
+      "speedup": 1.094142310411472,
+      "target": 1.6,
+      "met_target": false
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "1080p",
+      "threads": 2,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.01641512550000357,
+            "std": 0.00015140024385882237,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.09214282299999751,
+            "std": 0.00031151564855833036,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.42481904360000444,
+            "std": 0.0013813917851338512,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 1.3284754460000017,
+            "std": 0.003298856777667417,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.10250669559999892,
+            "std": 0.0002443583685862043,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 1.9643591337000061,
+        "total_seconds_std": 0.0036014405935726446,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": 2,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "1080p",
+      "threads": 2,
+      "result": {
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-final.service[0m - Cloud-init: Final Stage.
+[[0;32m  OK  [0m] Stopped target [0;1;39mmulti-user.target[0m - Multi-User System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgetty.target[0m - Login Prompts.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtime-sync.target[0m - System Time Synchronized.
+         Stopping [0;1;39mModemManager.service[0m - Modem Manager...
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.019545260699993607,
+            "std": 0.00019368962733065255,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.06403324010000802,
+            "std": 0.00022510926396807686,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.2500060849000135,
+            "std": 0.001104075553717118,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 0.9379018139000038,
+            "std": 0.002591579469928823,
+            "n": 10
+          },
+          "warp_affine": {
+            "mean": 0.17430061010001055,
+            "std": 0.000503765890972972,
+            "n": 10
+          }
+        },
+        "total_seconds_mean": 1.4457870097000296,
+        "total_seconds_std": 0.002877018752570071,
+        "resolution_label": "1080p",
+        "cv2_num_threads_requested": 2,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.3586780905629865,
+        "_baseline_total_seconds_mean": 1.9643591337000061,
+        "_threads_used": 2
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "1080p",
+      "threads": 2,
+      "speedup": 1.3586780905629865,
+      "target": 1.6,
+      "met_target": false
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "1080p",
+      "threads": 4,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          1080,
+          1920
+        ],
+        "n_images": 20,
+        "repeats": 10,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.01602835470001196,
+            "std": 0.00015271614422085496,
+            "n": 10
+          },
+          "gaussian_blur_15": {
+            "mean": 0.09245513749999645,
+            "std": 0.0005596441698187749,
+            "n": 10
+          },
+          "canny_edge": {
+            "mean": 0.4249215388999971,
+            "std": 0.0007805976395768163,
+            "n": 10
+          },
+          "orb_detect_compute": {
+            "mean": 1.3973189120999963,
+            "std": 0.003963199724116314,
+            "n": 10
+          },
+          "warp_affine": {
+         Stopping [0;1;39mapport.service[0m - automatic crash report generation...
+         Stopping [0;1;39mchrony.service[0m - chrony, an NTP client/server...
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-config.service[0m - Cloud-init: Config Stage.
+[[0;32m  OK  [0m] Stopped target [0;1;39mcloud-config.target[0m - Cloud-config availability.
+         Stopping [0;1;39mcron.service[0m - Regular ba…ground program processing daemon...
+         Stopping [0;1;39mdocker.service[0m - Docker Application Container Engine...
+[  629.715103] cloud[  629.728198] cloud-init[1388]:             "std": 0.0002453453163062135,
+            "n": 10
+         Stopping [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup...
+          },
+          "orb_detect_compute": {
+[[0;32m  OK  [0m] Stopped [0;1;39mcron.service[0m - Regular background program processing daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mirqbalance.service[0m - irqbalance daemon.
+            "mean": 0.9973126701000012,
+            "std": 0.0037067054661655283,
+            "n": 10
+[[0;32m  OK  [0m] Stopped [0;1;39mnetworkd-dispatcher.servic…[0matcher daemon for systemd-networkd.
+          },
+          "warp_affine": {
+            "mean": 0.1700214911999865,
+            "std": 0.0004839441239885295,
+            "n": 10
+          }
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-logind.service[0m - User Login Management.
+        },
+        "total_seconds_mean": 1.4884821151999745,
+[[0;32m  OK  [0m] Stopped [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
+        "total_seconds_std": 0.004157656107594747,
+[[0;32m  OK  [0m] Stopped [0;1;39mrsyslog.service[0m - System Logging Service.
+        "resolution_label": "1080p",
+[[0;32m  OK  [0m] Stopped [0;1;39mgetty@tty1.service[0m - Getty on tty1.
+[[0;32m  OK  [0m] Stopped [0;1;39mchrony.service[0m - chrony, an NTP client/server.
+[[0;32m  OK  [0m] Stopped [0;1;39mModemManager.service[0m - Modem Manager.
+        "cv2_num_threads_requested": 4,
+        "cv2_num_threads_actual": 4,
+        "_speedup_vs_baseline": 1.3705401023417325,
+        "_baseline_total_seconds_mean": 2.0400244305000115,
+[[0;32m  OK  [0m] Stopped [0;1;39mdocker.service[0m - Docker Application Container Engine.
+[[0;32m  OK  [0m] Stopped [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup.
+        "_threads_used": 4
+      }
+    },
+    {
+      "step": "evaluate",
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
+      "resolution": "1080p",
+      "threads": 4,
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-serial\x2dget…slice[0m - Slice /system/serial-getty.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgetty-pre.target[0m - Preparation for Logins.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork-online.target[0m - Network is Online.
+         Stopping [0;1;39mcontainerd.service[0m - containerd container runtime...
+[[0;32m  OK  [0m] Stopped [0;1;39mplymouth-quit-wait.service[0m…old until boot process finishes up.
+      "speedup": 1.3705401023417325,
+      "target": 1.6,
+         Starting [0;1;39mplymouth-switch-root-init…[0mll Plymouth To Jump To initramfs...
+      "met_target": false
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "4k",
+      "threads": -1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.04743774450001581,
+            "std": 0.0014428920904164754,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.32708360924999624,
+            "std": 0.00044116483643979825,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.725743303999991,
+            "std": 0.005976533146910276,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 5.173795583250012,
+            "std": 0.005610305764097877,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.4004489857499891,
+            "std": 0.0010546814004397153,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 7.674509226750004,
+        "total_seconds_std": 0.00840139250819279,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "4k",
+      "threads": -1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.06608013625000808,
+            "std": 0.0003933480168020633,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.21952814475000082,
+            "std": 0.0005661617184839728,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.0122608979999939,
+            "std": 0.0030393199317327794,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 3.7192352010000036,
+            "std": 0.002894622745263464,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.6771042897500053,
+            "std": 0.0018942221210216355,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 5.694208669750012,
+        "total_seconds_std": 0.004656140642462519,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": -1,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.3477744971869694,
+        "_baseline_total_seconds_mean": 7.674509226750004,
+        "_threads_used": -1
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "4k",
+      "threads": -1,
+         Stopping [0;1;39mpolkit.service[0m - Authorization Manager...
+      "speedup": 1.3477744971869694,
+      "target": 1.6,
+         Stopping [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+[[0;32m  OK  [0m] Stopped [0;1;39mcontainerd.service[0m - containerd container runtime.
+[[0;32m  OK  [0m] Stopped [0;1;39mapport.service[0m - automatic crash report generation.
+      "met_target": false
+[[0;32m  OK  [0m] Stopped [0;1;39mpolkit.service[0m - Authorization Manager.
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "4k",
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+      "threads": 1,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.08068394875000706,
+            "std": 0.0002424238947772588,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.5756022175000055,
+            "std": 0.00021284252772382518,
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-switch-root-init…[0mTell Plymouth To Jump To initramfs.
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 3.283259345749997,
+            "std": 0.009478913686223832,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 5.577806491000004,
+            "std": 0.010864236620479452,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.7928201859999859,
+            "std": 0.000823004346088461,
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs.target[0m - Remote File Systems.
+            "n": 4
+          }
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
+        },
+        "total_seconds_mean": 10.310172189,
+        "total_seconds_std": 0.014445166993035961,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": 1,
+        "cv2_num_threads_actual": 1
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "4k",
+      "threads": 1,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.1096538915000167,
+            "std": 0.00026450458354659824,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.3734180769999824,
+            "std": 0.0005718055210808807,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.9891572869999834,
+            "std": 0.0019303185592723748,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 5.79134836050001,
+            "std": 0.0047759302753036074,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 1.2943537522500037,
+            "std": 0.002128535554070742,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 9.557931368249996,
+        "total_seconds_std": 0.005609209174957905,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": 1,
+        "cv2_num_threads_actual": 1,
+        "_speedup_vs_baseline": 1.078703308463674,
+        "_baseline_total_seconds_mean": 10.310172189
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "4k",
+      "threads": 1,
+      "speedup": 1.078703308463674,
+      "target": 1.6,
+      "met_target": false
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "4k",
+      "threads": 2,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.04594331449999345,
+            "std": 1.5417747743382164e-05,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.32407069525000054,
+            "std": 0.000265214605083533,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.7240221737499866,
+            "std": 0.003557854001129499,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 5.182889626000005,
+            "std": 0.005237891035133472,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.3986374389999696,
+            "std": 0.00026604276456654053,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 7.675563248499955,
+        "total_seconds_std": 0.006343120906585187,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": 2,
+        "cv2_num_threads_actual": 2
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "4k",
+      "threads": 2,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.06467121049996649,
+            "std": 0.0002132536269689831,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.21513225299997885,
+            "std": 0.00040138497093226164,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.0063407825000183,
+            "std": 0.007415673996779917,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 3.71698884449998,
+            "std": 0.009379094768140129,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.6732261622500175,
+            "std": 0.0013484705160271653,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 5.676359252749961,
+        "total_seconds_std": 0.01204095507977551,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": 2,
+        "cv2_num_threads_actual": 2,
+        "_speedup_vs_baseline": 1.352198285332533,
+        "_baseline_total_seconds_mean": 7.675563248499955,
+        "_threads_used": 2
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "4k",
+      "threads": 2,
+      "speedup": 1.352198285332533,
+      "target": 1.6,
+      "met_target": false
+    },
+    {
+      "step": "baseline_run",
+      "resolution": "4k",
+      "threads": 4,
+      "result": {
+        "opencv_version": "5.0.0",
+        "opencv_build_path": "/tmp/baseline_venv/lib/python3.12/site-packages/cv2/__init__.py",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.04801409024997838,
+            "std": 0.00034453115389556244,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.32948528500000407,
+            "std": 0.0001775601079115308,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.7266203217500333,
+            "std": 0.00526633889693033,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 5.202206226250013,
+            "std": 0.008208141931888827,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.4074582729999747,
+            "std": 0.0014053263538728014,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 7.713784196250003,
+        "total_seconds_std": 0.00986068409493827,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": 4,
+        "cv2_num_threads_actual": 4
+      }
+    },
+    {
+      "step": "cool_run",
+      "resolution": "4k",
+      "threads": 4,
+      "result": {
+        "opencv_version": "4.14.0-pre",
+        "opencv_build_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so",
+        "image_size": [
+          2160,
+          3840
+        ],
+        "n_images": 20,
+        "repeats": 4,
+        "ops_seconds": {
+          "resize_half": {
+            "mean": 0.06730110450001803,
+            "std": 0.0014056724249973662,
+            "n": 4
+          },
+          "gaussian_blur_15": {
+            "mean": 0.20791474349996975,
+            "std": 0.006017895088354025,
+            "n": 4
+          },
+          "canny_edge": {
+            "mean": 1.0151715342500154,
+            "std": 0.0005016606855362071,
+            "n": 4
+          },
+          "orb_detect_compute": {
+            "mean": 3.974383570250012,
+            "std": 0.2894753759274463,
+            "n": 4
+          },
+          "warp_affine": {
+            "mean": 0.6589098995000029,
+            "std": 0.0011760145027936322,
+            "n": 4
+          }
+        },
+        "total_seconds_mean": 5.923680852000018,
+        "total_seconds_std": 0.28954415711278203,
+        "resolution_label": "4k",
+        "cv2_num_threads_requested": 4,
+        "cv2_num_threads_actual": 4,
+        "_speedup_vs_baseline": 1.302194427582234,
+        "_baseline_total_seconds_mean": 7.713784196250003
+      }
+    },
+    {
+      "step": "evaluate",
+      "resolution": "4k",
+      "threads": 4,
+      "speedup": 1.302194427582234,
+      "target": 1.6,
+      "met_target": false
+    }
+  ]
+}
+===AGENT_REPORT_END===
++ echo ===INSTANCE_SELF_SHUTDOWN===
+===INSTANCE_SELF_SHUTDOWN===
++ shutdown -h now
+Received signal 15 resulting in exit. Cause:
+  Filename: /usr/lib/python3.12/selectors.py
+  Function: select
+  Line number: 415
+    Filename: /usr/lib/python3.12/subprocess.py
+    Function: _communicate
+    Line number: 2115
+      Filename: /usr/lib/python3.12/subprocess.py
+      Function: communicate
+      Line number: 1209
+[[0;32m  OK  [0m] Stopped [0;1;39mfinalrd.service[0m - Create f…untime dir for shutdown pivot root.
+[[0;32m  OK  [0m] Stopped [0;1;39msnapd.service[0m - Snap Daemon.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtime-set.target[0m - System Time Set.
+[  [0;31m*[0;1;31m*[0m[0;31m* [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (5s / 1min)
+M[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (6s / 1min)
+M[K[    [0;31m*[0;1;31m*[0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (6s / 1min)
+M[K[     [0;31m*[0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (7s / 1min)
+M[K[    [0;31m*[0;1;31m*[0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (7s / 1min)
+M[K[[0;32m  OK  [0m] Stopped [0;1;39msnap.amazon-ssm-agent.amaz…[0m amazon-ssm-agent.amazon-ssm-agent.
+[K[[0;32m  OK  [0m] Stopped target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork.target[0m - Network.
+[[0;32m  OK  [0m] Stopped target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Stopped [0;1;39macpid.path[0m - ACPI Events Check.
+[[0;32m  OK  [0m] Stopped target [0;1;39mslices.target[0m - Slice Units.
+[[0;32m  OK  [0m] Removed slice [0;1;39muser.slice[0m - User and Session Slice.
+[[0;32m  OK  [0m] Stopped target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Closed [0;1;39macpid.socket[0m - ACPID Listen Socket.
+[[0;32m  OK  [0m] Closed [0;1;39mdocker.socket[0m - Docker Socket for the API.
+[[0;32m  OK  [0m] Closed [0;1;39miscsid.socket[0m - Open-iSCSI iscsid Socket.
+[[0;32m  OK  [0m] Closed [0;1;39mlxd-installer.socket[0m - Helper to install lxd snap on demand.
+[[0;32m  OK  [0m] Closed [0;1;39msnapd.socket[0m - Socket activation for snappy daemon.
+[[0;32m  OK  [0m] Closed [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
+[[0;32m  OK  [0m] Closed [0;1;39msyslog.socket[0m - Syslog Socket.
+[[0;32m  OK  [0m] Closed [0;1;39muuidd.socket[0m - UUID daemon activation socket.
+[[0;32m  OK  [0m] Stopped target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Stopped target [0;1;39mcryptsetup.target[0m - Local Encrypted Volumes.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Stopped target [0;1;39mintegritysetup.targ…[0m Local Integrity Protected Volumes.
+[[0;32m  OK  [0m] Stopped target [0;1;39mswap.target[0m - Swaps.
+[[0;32m  OK  [0m] Stopped target [0;1;39mveritysetup.target[0m - Local Verity Protected Volumes.
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-init.service[0m - Cloud-init: Network Stage.
+         Stopping [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-networkd-wait-onli…[0m Wait for Network to be Configured.
+         Stopping [0;1;39msystemd-networkd.service[0m - Network Configuration...
+         Stopping [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
+         Stopping [0;1;39msystemd-update-utmp.servi…[0mord System Boot/Shutdown in UTMP...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-networkd.service[0m - Network Configuration.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-update-utmp.servic…[0mecord System Boot/Shutdown in UTMP.
+[[0;32m  OK  [0m] Unset automount [0;1;39mproc-sys-fs-binfmt…[0mormats File System Automount Point.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork-pre.target[0m - Preparation for Network.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-networkd.socket[0m - Network Service Netlink Socket.
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-init-local.service[0m -…ud-init: Local Stage (pre-network).
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup.ser…[0mate Volatile Files and Directories.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39msnapd.mounts.target[0m - Mounted snaps.
+         Unmounting [0;1;39mboot-efi.mount[0m - /boot/efi...
+         Unmounting [0;1;39msnap-amazon\x2dssm\x2da…[0mamazon-ssm-agent, revision 13008...
+         Unmounting [0;1;39msnap-amazon\x2dssm\x2da…[0mamazon-ssm-agent, revision 13348...
+         Unmounting [0;1;39msnap-core22-2293.mount[0m …t unit for core22, revision 2293...
+         Unmounting [0;1;39msnap-core22-2412.mount[0m …t unit for core22, revision 2412...
+         Unmounting [0;1;39msnap-snapd-26869.mount[0m …t unit for snapd, revision 26869...
+         Unmounting [0;1;39msnap-snapd-27407.mount[0m …t unit for snapd, revision 27407...
+[[0;32m  OK  [0m] Unmounted [0;1;39mboot-efi.mount[0m - /boot/efi.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-amazon\x2dssm\x2dag…[0mr amazon-ssm-agent, revision 13008.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-amazon\x2dssm\x2dag…[0mr amazon-ssm-agent, revision 13348.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-core22-2293.mount[0m -…unt unit for core22, revision 2293.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-core22-2412.mount[0m -…unt unit for core22, revision 2412.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-snapd-26869.mount[0m -…unt unit for snapd, revision 26869.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-snapd-27407.mount[0m -…unt unit for snapd, revision 27407.
+[[0;32m  OK  [0m] Stopped target [0;1;39msnapd.mounts-pre.target[0m - Mounting snaps.
+         Unmounting [0;1;39mboot.mount[0m - /boot...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck@dev-disk-by\x…[0mm Check on /dev/disk/by-label/UEFI.
+[[0;32m  OK  [0m] Unmounted [0;1;39mboot.mount[0m - /boot.
+[[0;32m  OK  [0m] Reached target [0;1;39mumount.target[0m - Unmount All Filesystems.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck@dev-disk-by\x…[0mm Check on /dev/disk/by-label/BOOT.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-systemd\x2dfs…slice[0m - Slice /system/systemd-fsck.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+         Stopping [0;1;39mlvm2-monitor.service[0m - Mo…ing dmeventd or progress polling...
+         Stopping [0;1;39mmultipathd.service[0m - Devi…pper Multipath Device Controller...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mCreate Static Device Nodes in /dev.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mic Device Nodes in /dev gracefully.
+[[0;32m  OK  [0m] Stopped [0;1;39mlvm2-monitor.service[0m - Mon…using dmeventd or progress polling.
+[[0;32m  OK  [0m] Stopped [0;1;39mmultipathd.service[0m - Devic…Mapper Multipath Device Controller.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-remount-fs.service[0m…mount Root and Kernel File Systems.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck-root.service[0m - File System Check on Root Device.
+[[0;32m  OK  [0m] Reached target [0;1;39mshutdown.target[0m - System Shutdown.
+[[0;32m  OK  [0m] Reached target [0;1;39mfinal.target[0m - Late Shutdown Services.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-poweroff.service[0m - System Power Off.
+[[0;32m  OK  [0m] Reached target [0;1;39mpoweroff.target[0m - System Power Off.
+[  639.165458] reboot: Power down
