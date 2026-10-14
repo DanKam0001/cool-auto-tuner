@@ -1,0 +1,294 @@
+<title>COOL Speedup Results</title>
+<style>
+/* layout: hero stat, then a grouped bar comparison per resolution, then a callout */
+:root {
+  --bg: #f9f9f7;
+  --surface: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --border: rgba(11,11,11,0.10);
+  --series-baseline: #c3c2b7;
+  --series-cool: #2a78d6;
+  --good: #0ca30c;
+  --warn-bg: #fdf3e9;
+  --warn-border: #eda100;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0d0d;
+    --surface: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --border: rgba(255,255,255,0.10);
+    --series-baseline: #52514e;
+    --series-cool: #3987e5;
+    --good: #0ca30c;
+    --warn-bg: #241c0f;
+    --warn-border: #c98500;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d0d0d;
+  --surface: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --border: rgba(255,255,255,0.10);
+  --series-baseline: #52514e;
+  --series-cool: #3987e5;
+  --good: #0ca30c;
+  --warn-bg: #241c0f;
+  --warn-border: #c98500;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding: 32px 16px 48px;
+}
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  font-size: clamp(28px, 6vw, 40px);
+  line-height: 1.1;
+  margin: 4px 0 0;
+  text-wrap: balance;
+}
+.hero-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hero-number {
+  font-size: clamp(56px, 14vw, 88px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--series-cool);
+  font-variant-numeric: tabular-nums;
+}
+.hero-caption {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 50ch;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 20px 16px;
+}
+.card h2 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 16px;
+  color: var(--text-secondary);
+}
+.legend {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.swatch { width: 10px; height: 10px; border-radius: 2px; }
+
+.chart-group { display: flex; flex-direction: column; gap: 18px; }
+.chart-row { display: flex; flex-direction: column; gap: 6px; }
+.chart-row-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.bar-pair { display: flex; flex-direction: column; gap: 4px; }
+.bar-track {
+  position: relative;
+  height: 22px;
+  background: transparent;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  min-width: 2px;
+  transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 0;
+}
+.bar-fill.baseline { background: var(--series-baseline); }
+.bar-fill.cool { background: var(--series-cool); }
+.bar-value {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-left: 8px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.bar-label {
+  font-size: 11px;
+  color: var(--muted);
+  width: 56px;
+  flex-shrink: 0;
+}
+.bar-line { display: flex; align-items: center; gap: 8px; }
+
+.sample-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+.callout {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+}
+.callout-mark {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--warn-border);
+  flex-shrink: 0;
+}
+.callout-body { font-size: 13px; color: var(--text-primary); line-height: 1.5; }
+.callout-body strong { font-variant-numeric: tabular-nums; }
+
+@media (max-width: 480px) {
+  .bar-label { width: 44px; }
+}
+</style>
+
+<div class="page">
+  <div>
+    <div class="eyebrow">OpenCV AI Competition 2026 &middot; COOL Auto-Tuner</div>
+    <h1>Does COOL actually run faster?</h1>
+  </div>
+
+  <div class="hero-stat">
+    <div class="hero-number" id="heroNumber">0%</div>
+    <div class="hero-caption">faster than genuine baseline OpenCV 5.0.0, averaged across 25 independent measurements on real AWS Graviton hardware.</div>
+  </div>
+
+  <div class="card">
+    <h2>Total op-suite time by resolution</h2>
+    <div class="legend">
+      <div class="legend-item"><span class="swatch" style="background:var(--series-baseline)"></span>Baseline (pip OpenCV 5.0.0)</div>
+      <div class="legend-item"><span class="swatch" style="background:var(--series-cool)"></span>COOL (4.14.0-pre)</div>
+    </div>
+    <div class="chart-group" id="chartGroup"></div>
+    <div class="sample-note">Mean of 10 repeats per operation (4 for 4K), averaged across 7-9 independent instance launches per resolution.</div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-mark">&#9888;</div>
+    <div class="callout-body">
+      Forcing single-threaded execution made COOL <strong>17&ndash;20% slower</strong> than baseline, consistently, across every resolution tested &mdash; found by deliberately pushing the agent past a target it couldn't hit, not something a vendor's own headline number would surface.
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Real measured data: mean total_seconds_mean per resolution, baseline vs COOL,
+  // averaged across all logged runs (see docs/REPORT.md for full per-run tables).
+  var data = [
+    { label: "480p",  baseline: 0.430, cool: 0.430 / 1.325 },
+    { label: "1080p", baseline: 1.927, cool: 1.927 / 1.368 },
+    { label: "4K",     baseline: 7.623, cool: 7.623 / 1.395 }
+  ];
+
+  var maxVal = Math.max.apply(null, data.map(function (d) { return d.baseline; }));
+
+  var group = document.getElementById("chartGroup");
+  data.forEach(function (d) {
+    var row = document.createElement("div");
+    row.className = "chart-row";
+
+    var label = document.createElement("div");
+    label.className = "chart-row-label";
+    label.textContent = d.label;
+    row.appendChild(label);
+
+    var pair = document.createElement("div");
+    pair.className = "bar-pair";
+
+    [["baseline", d.baseline, "Baseline"], ["cool", d.cool, "COOL"]].forEach(function (entry) {
+      var cls = entry[0], val = entry[1];
+      var line = document.createElement("div");
+      line.className = "bar-line";
+
+      var trackWrap = document.createElement("div");
+      trackWrap.style.flex = "1";
+      var track = document.createElement("div");
+      track.className = "bar-track";
+      var fill = document.createElement("div");
+      fill.className = "bar-fill " + cls;
+      fill.dataset.targetWidth = ((val / maxVal) * 100).toFixed(1) + "%";
+      track.appendChild(fill);
+      trackWrap.appendChild(track);
+
+      var value = document.createElement("span");
+      value.className = "bar-value";
+      value.textContent = val.toFixed(2) + "s";
+
+      line.appendChild(trackWrap);
+      line.appendChild(value);
+      pair.appendChild(line);
+    });
+
+    row.appendChild(pair);
+    group.appendChild(row);
+  });
+
+  // Animate bars in and count up the hero number once the page is visible.
+  function animate() {
+    document.querySelectorAll(".bar-fill").forEach(function (el, i) {
+      setTimeout(function () {
+        el.style.width = el.dataset.targetWidth;
+      }, 80 * i);
+    });
+
+    var hero = document.getElementById("heroNumber");
+    var target = 36;
+    var start = null;
+    var duration = 900;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      hero.textContent = Math.round(eased * target) + "%";
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  if (document.readyState === "complete") animate();
+  else window.addEventListener("load", animate);
+})();
+</script>
