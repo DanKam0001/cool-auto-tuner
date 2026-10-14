@@ -100,19 +100,14 @@ improves) when moving to a larger instance.
 
 ### Stress test (target: 1.6x) — full thread-count sweep, all 3 resolutions
 
-| Resolution | threads=default | threads=1 | threads=2 | threads=4 |
-|---|---|---|---|---|
-| 480p | 1.28x | **0.83x** | 1.34x | 1.36x |
-| 1080p | 1.40x | **0.84x** | 1.40x | 1.37x |
-| 4K | 1.35x | **0.80x** | 1.31x | 1.37x |
-
-No configuration reached 1.6x — the agent correctly worked through all four
-thread-count candidates for all three resolutions before reporting `TARGET_NOT_MET`,
-which is the honest outcome, not a failure of the agent. More interesting: **forcing
-single-threaded execution makes COOL ~17-20% *slower* than baseline**, consistently,
-across every resolution tested — COOL's acceleration appears to depend on being allowed
-to use more than one thread, a genuinely non-obvious finding this kind of automated,
-adversarial-ish sweep is well suited to surface.
+**Retracted and being re-run.** An earlier version of this section reported that
+forcing single-threaded execution made COOL "17-20% slower than baseline." That
+measurement compared COOL-at-1-thread against a baseline that was always run at its
+*default* thread count (2), not also pinned to 1 thread -- so it was really just
+showing that 1 core is slower than 2, true for any parallelizable code, baseline
+included, and not a COOL-specific effect at all. The agent now re-measures baseline
+at each matching thread count before comparing, and this section will be updated with
+the corrected, apples-to-apples numbers once that re-run completes.
 
 ## Limitations / honest caveats
 
