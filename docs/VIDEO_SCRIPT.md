@@ -49,12 +49,16 @@ Numbers below are real, pulled from `docs/REPORT.md` — don't round them up.
 
 **[3:30–4:00] Screen capture, the honest failure case**
 
-> **PENDING — placeholder, do not record this section yet.** An earlier version of
-> this claimed single-threaded COOL was 17-20% slower than baseline. That was a bug:
-> baseline was being compared at its default thread count instead of also pinned to
-> 1 thread, so it wasn't actually measuring COOL specifically. Fixed in the agent,
-> re-running now. This section gets rewritten with the corrected numbers before you
-> record it — check `docs/REPORT.md` for the final version first.
+- Show the corrected stress-test table from `docs/REPORT.md`.
+
+> "I also deliberately gave it a harder target — 1.6x — specifically to force it to
+> try every option it had instead of stopping at the first success. It never hit
+> 1.6x, and it told me that honestly instead of hiding it. What it did find: COOL is
+> faster than baseline at every thread count I tested — it never gets worse — but the
+> margin depends on parallelism. Single-threaded, it's only about 8 to 9 percent
+> faster. With two or more threads, that jumps to 30 to 36 percent. COOL's speedup
+> scales with how much parallelism you give it — that's the kind of detail you only
+> get from actually stress-testing a claim, not from a headline number."
 
 **[4:00–4:30] Face cam, close**
 

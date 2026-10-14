@@ -98,16 +98,31 @@ baseline OpenCV 5.0.0), range 1.29x–1.46x.** Every single measurement cleared 
 1.25x target — the result is consistent, not a one-off, and it holds (and modestly
 improves) when moving to a larger instance.
 
-### Stress test (target: 1.6x) — full thread-count sweep, all 3 resolutions
+### Stress test (target: 1.6x) — full thread-count sweep, matched baseline per thread count
 
-**Retracted and being re-run.** An earlier version of this section reported that
-forcing single-threaded execution made COOL "17-20% slower than baseline." That
-measurement compared COOL-at-1-thread against a baseline that was always run at its
-*default* thread count (2), not also pinned to 1 thread -- so it was really just
-showing that 1 core is slower than 2, true for any parallelizable code, baseline
-included, and not a COOL-specific effect at all. The agent now re-measures baseline
-at each matching thread count before comparing, and this section will be updated with
-the corrected, apples-to-apples numbers once that re-run completes.
+An earlier version of this report claimed single-threaded COOL was "17-20% slower
+than baseline." That was wrong: baseline was being measured once at its default
+thread count (2) and reused across every COOL thread-count candidate, so the result
+was really showing "1 core is slower than 2 cores" -- true of any parallelizable
+code, baseline included -- not anything specific to COOL. The agent was fixed to
+re-measure baseline at each matching thread count before comparing; the corrected,
+apples-to-apples numbers are below (two data points were lost to a console-log
+buffer limit, see raw data for what's available):
+
+| Resolution | threads=default | threads=1 | threads=2 | threads=4 |
+|---|---|---|---|---|
+| 1080p | 1.344x | 1.094x | 1.359x | *(lost to buffer truncation)* |
+| 4K | 1.348x | 1.079x | 1.352x | 1.302x |
+
+**Corrected finding: COOL is faster than baseline at every thread count tested --
+it never regresses.** The margin is smaller running single-threaded (~8-9% faster)
+than with 2 or more threads (~30-36% faster), which is a real and still interesting
+result -- COOL's acceleration scales with available parallelism -- just a much less
+dramatic one than the retracted claim. No configuration reached the 1.6x stress
+target, and the agent correctly worked through its thread-count candidates before
+reporting that honestly, which is what this stress test was designed to verify in
+the first place (that the escalation logic actually runs, not just succeeds by luck
+on the first try).
 
 ## Limitations / honest caveats
 

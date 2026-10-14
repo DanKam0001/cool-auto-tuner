@@ -206,9 +206,9 @@ h1 {
   </div>
 
   <div class="callout">
-    <div class="callout-mark">&#8505;</div>
+    <div class="callout-mark">&#9888;</div>
     <div class="callout-body">
-      A stress test deliberately pushes the agent past a target it can't hit, to prove it actually explores alternatives instead of stopping at the first try &mdash; results from that sweep are being finalized.
+      A stress test (1.6x target, forcing the agent through every thread-count option) found COOL is <strong>faster at every thread count &mdash; it never regresses</strong> &mdash; but the margin scales with parallelism: only ~8&ndash;9% faster single-threaded, versus 30&ndash;36% with 2 or more threads.
     </div>
   </div>
 </div>
