@@ -65,18 +65,38 @@ terminates itself the moment it's done (see "Safety" below).
 
 ## Results
 
-### Standard runs (target: 1.25x) — 10 independent measurements across 4 separate instance launches
+### Standard runs (target: 1.25x) — 25 independent measurements across 9 separate instance launches, 2 instance sizes
 
-| Resolution | Run | Baseline total (s) | Speedup vs. baseline |
-|---|---|---|---|
-| 1080p | run3 | 1.927 | 1.350x |
-| 480p / 1080p / 4K | run4 | 0.430 / 1.948 / 7.623 | 1.355x / 1.352x / 1.344x |
-| 480p / 1080p / 4K | repro5 | — | 1.291x / 1.354x / 1.463x |
-| 480p / 1080p / 4K | repro6 | — | 1.348x / 1.400x / 1.349x |
+**`c8g.large` (2 vCPU) — 19 measurements across 7 launches:**
 
-**Mean speedup across all 10 measurements: ~1.36x (COOL is ~36% faster than genuine
+| Resolution | Run | Speedup vs. baseline |
+|---|---|---|
+| 1080p | run3 | 1.350x |
+| 480p / 1080p / 4K | run4 | 1.355x / 1.352x / 1.344x |
+| 480p / 1080p / 4K | repro5 | 1.291x / 1.354x / 1.463x |
+| 480p / 1080p / 4K | repro6 | 1.348x / 1.400x / 1.349x |
+| 480p / 1080p / 4K | repro7 | 1.356x / 1.350x / 1.351x |
+| 480p / 1080p / 4K | repro8 | 1.352x / 1.346x / 1.350x |
+| 480p / 1080p / 4K | repro9 | 1.298x / 1.309x / 1.349x |
+
+Mean: **1.351x (~35% faster)**.
+
+**`c8g.xlarge` (4 vCPU) — 6 measurements across 2 launches, to check whether the
+speedup holds as instance size scales up:**
+
+| Resolution | Run | Speedup vs. baseline |
+|---|---|---|
+| 480p / 1080p / 4K | scale_xlarge1 | 1.360x / 1.441x / 1.449x |
+| 480p / 1080p / 4K | scale_xlarge3 | 1.346x / 1.403x / 1.448x |
+
+Mean: **1.408x (~41% faster)** — *higher* than on the smaller instance, consistent
+with the stress-test finding below that COOL's advantage grows with more available
+threads.
+
+**Overall mean across all 25 measurements: ~1.36x (COOL is ~36% faster than genuine
 baseline OpenCV 5.0.0), range 1.29x–1.46x.** Every single measurement cleared the
-1.25x target — the result is consistent, not a one-off.
+1.25x target — the result is consistent, not a one-off, and it holds (and modestly
+improves) when moving to a larger instance.
 
 ### Stress test (target: 1.6x) — full thread-count sweep, all 3 resolutions
 
@@ -96,10 +116,10 @@ adversarial-ish sweep is well suited to surface.
 
 ## Limitations / honest caveats
 
-- Sample size is modest (10 standard measurements, one stress sweep) — enough to show
-  consistency, not enough for formal statistical confidence intervals.
-- Only one instance size (`c8g.large`) was tested; COOL's own Marketplace listings
-  cover larger Graviton4/5 instance families we didn't benchmark.
+- Sample size is reasonable (25 standard measurements, one stress sweep) but still not
+  large enough for formal statistical confidence intervals.
+- Two instance sizes tested (`c8g.large`, `c8g.xlarge`); COOL's own Marketplace
+  listings cover larger Graviton4/5 instance families beyond those two.
 - The workload is a fixed synthetic suite of common operations, not a real production
   pipeline — representative, but not identical to every real use case.
 - The agent's thread-count exploration never needed to go beyond `threads=4`; whether
