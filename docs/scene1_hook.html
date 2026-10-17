@@ -1,0 +1,260 @@
+<title>Scene 1 — Hook</title>
+<style>
+:root {
+  --bg: #0d0d0d;
+  --surface: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --muted: #898781;
+  --border: rgba(255,255,255,0.10);
+  --series-cool: #3987e5;
+  --good: #0ca30c;
+  --warn: #c98500;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.stage { width: 1920px; height: 1080px; position: relative; }
+
+.card {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -46%);
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  padding: 0 160px;
+  pointer-events: none;
+}
+.card.show { opacity: 1; transform: translate(-50%, -50%); }
+.eyebrow {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.big {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-wrap: balance;
+}
+.big .hl { color: var(--series-cool); }
+.big .hl2 { color: var(--warn); }
+.sub {
+  font-size: 30px;
+  color: var(--text-secondary);
+  margin-top: 24px;
+}
+
+.pipeline-wrap {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.pipeline-wrap.show { opacity: 1; }
+.pipeline-title {
+  position: absolute;
+  top: 80px; left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pipeline {
+  position: absolute;
+  top: 170px; left: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 760px;
+}
+.pstep {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  opacity: 0.25;
+  transform: translateX(-16px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.5s ease;
+}
+.pstep.show { opacity: 1; transform: translateX(0); border-color: var(--series-cool); }
+.pnum {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--pending, #333);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; font-weight: 700; flex-shrink: 0;
+  background: #333;
+}
+.pstep.show .pnum { background: var(--series-cool); }
+.plabel { font-size: 25px; font-weight: 600; line-height: 1.3; }
+
+.gallery {
+  position: absolute;
+  top: 170px; right: 110px;
+  width: 940px;
+}
+.gallery-title {
+  font-size: 22px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  text-align: center;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.gcell {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.gcell.show { opacity: 1; transform: scale(1); }
+.gcell img { width: 100%; display: block; }
+.gcell .glabel {
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 0;
+  color: var(--text-secondary);
+}
+</style>
+
+<div class="stage" id="stage">
+  <div class="pipeline-wrap" id="pipelineWrap">
+    <div class="pipeline-title">How the agent works</div>
+    <div class="pipeline" id="pipeline"></div>
+    <div class="gallery">
+      <div class="gallery-title">Real OpenCV 5 operations, run live</div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var stage = document.getElementById("stage");
+var allCards = [];
+
+function textCard(html) {
+  var el = document.createElement("div");
+  el.className = "card";
+  el.innerHTML = html;
+  stage.appendChild(el);
+  allCards.push(el);
+  return el;
+}
+
+var cards = [];
+cards.push({ t: 0.0, el: textCard(
+  '<div class="eyebrow">AWS Marketplace</div>' +
+  '<div class="big">AWS sells a special, faster build<br>of OpenCV for their <span class="hl">Graviton</span> chips.</div>'
+)});
+cards.push({ t: 6.0, el: textCard(
+  '<div class="eyebrow">The Product</div>' +
+  '<div class="big">It\'s called <span class="hl">COOL</span><br><span style="font-size:34px;color:var(--text-secondary)">Cloud-Optimized OpenCV Library</span></div>'
+)});
+cards.push({ t: 12.0, el: textCard(
+  '<div class="big">The claim: faster than<br>regular OpenCV.</div>' +
+  '<div class="sub">Simple enough.</div>'
+)});
+cards.push({ t: 17.6, el: textCard(
+  '<div class="big">But it\'s a <span class="hl2">paid product.</span></div>'
+)});
+cards.push({ t: 20.6, el: textCard(
+  '<div class="big">There\'s no public way to verify<br>that claim before you pay for it.</div>'
+)});
+cards.push({ t: 25.5, el: textCard(
+  '<div class="eyebrow">The Fix</div>' +
+  '<div class="big">So I built an <span class="hl">agent</span> that checks it<br>for you &mdash; automatically, on real<br>AWS hardware.</div>'
+)});
+cards.push({ t: 33.0, el: textCard(
+  '<div class="big">And shows its work &mdash;<br>including the parts where<br><span class="hl2">COOL doesn\'t help.</span></div>'
+)});
+
+// pipeline steps
+var steps = [
+  { label: "Launch a cheap AWS Graviton instance", t: 43.0 },
+  { label: "Install a genuinely vanilla OpenCV baseline", t: 47.56 },
+  { label: "Run real vision ops: resize, blur, edges, features, warp", t: 51.3 },
+  { label: "Switch to COOL, same instance, same images", t: 61.9 },
+  { label: "If the target isn't met, try different thread configs", t: 70.0 },
+  { label: "Report exactly what happened", t: 81.9 },
+  { label: "Shut itself down — no idle cost", t: 84.1 },
+];
+var pipelineEl = document.getElementById("pipeline");
+var stepEls = steps.map(function (s) {
+  var el = document.createElement("div");
+  el.className = "pstep";
+  el.innerHTML = '<div class="pnum"></div><div class="plabel">' + s.label + '</div>';
+  pipelineEl.appendChild(el);
+  return el;
+});
+
+// real cv2-generated gallery
+var gallery = [
+  { t: 51.3, label: "Original", src: "ex_original.png" },
+  { t: 53.0, label: "Resize", src: "ex_resize.png" },
+  { t: 54.7, label: "Gaussian blur", src: "ex_blur.png" },
+  { t: 56.4, label: "Canny edges", src: "ex_edges.png" },
+  { t: 58.1, label: "ORB features", src: "ex_features.png" },
+  { t: 59.8, label: "Warp affine", src: "ex_warp.png" },
+];
+var galleryGrid = document.getElementById("galleryGrid");
+var gcells = gallery.map(function (g) {
+  var el = document.createElement("div");
+  el.className = "gcell";
+  el.innerHTML = '<img src="' + g.src + '"><div class="glabel">' + g.label + '</div>';
+  galleryGrid.appendChild(el);
+  return el;
+});
+
+var pipelineWrap = document.getElementById("pipelineWrap");
+var pipelineStart = 40.0;
+
+function tick() {
+  var now = (performance.now() - window.__start) / 1000;
+
+  // sequential text cards: each shows from its t until the NEXT card's t (fixes overlap)
+  cards.forEach(function (c, i) {
+    var nextT = (i + 1 < cards.length) ? cards[i + 1].t : pipelineStart;
+    if (now >= c.t && now < nextT) c.el.classList.add("show");
+    else c.el.classList.remove("show");
+  });
+
+  if (now >= pipelineStart) pipelineWrap.classList.add("show");
+  steps.forEach(function (s, i) {
+    if (now >= s.t) stepEls[i].classList.add("show");
+  });
+  gallery.forEach(function (g, i) {
+    if (now >= g.t) gcells[i].classList.add("show");
+  });
+
+  requestAnimationFrame(tick);
+}
+window.__start = performance.now();
+requestAnimationFrame(tick);
+</script>

@@ -1,0 +1,229 @@
+<title>Scene 2 — The Race</title>
+<style>
+:root {
+  --bg: #0d0d0d;
+  --surface: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --muted: #898781;
+  --border: rgba(255,255,255,0.10);
+  --baseline-c: #c3c2b7;
+  --cool-c: #3987e5;
+  --good: #0ca30c;
+  --warn: #c98500;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.stage { width: 1920px; height: 1080px; position: relative; }
+
+.title-block {
+  position: absolute;
+  top: 60px; left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.eyebrow {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.title { font-size: 46px; font-weight: 700; margin-top: 8px; }
+
+.tracks {
+  position: absolute;
+  top: 190px; left: 110px; right: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+}
+.track {
+  position: relative;
+}
+.track-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+.dot { width: 16px; height: 16px; border-radius: 4px; }
+.timer {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+.rail {
+  position: relative;
+  height: 130px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  gap: 0;
+}
+.station {
+  position: relative;
+  width: 130px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0.35;
+  transition: opacity 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+.station img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.station.active { opacity: 1; box-shadow: 0 0 0 3px var(--active-color, #3987e5); }
+.station.done { opacity: 1; }
+.connector { flex: 1; height: 4px; background: #333; position: relative; margin: 0 6px; }
+.connector .fill { position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: var(--active-color, #3987e5); }
+.station-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  font-size: 13px; text-align: center; padding: 3px 0;
+  background: rgba(0,0,0,0.55); color: #fff; font-weight: 600;
+}
+
+.result-banner {
+  position: absolute;
+  bottom: 70px; left: 50%;
+  transform: translateX(-50%) translateY(14px);
+  width: 1500px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.result-banner.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.result-headline { font-size: 44px; font-weight: 700; color: var(--good); }
+.result-sub { font-size: 26px; color: var(--text-secondary); margin-top: 14px; line-height: 1.5; }
+.result-sub b { color: var(--text-primary); }
+</style>
+
+<div class="stage" id="stage">
+  <div class="title-block">
+    <div class="eyebrow">Same images &middot; Same AWS Graviton instance</div>
+    <div class="title">Watch it run: real per-operation timing</div>
+  </div>
+
+  <div class="tracks">
+    <div class="track" id="trackBaseline">
+      <div class="track-label"><span class="dot" style="background:var(--baseline-c)"></span>Baseline &mdash; OpenCV 5.0.0<span class="timer" id="timerBaseline">0.00s</span></div>
+      <div class="rail" id="railBaseline" style="--active-color:var(--baseline-c)"></div>
+    </div>
+    <div class="track" id="trackCool">
+      <div class="track-label"><span class="dot" style="background:var(--cool-c)"></span>COOL 4.14.0-pre (Graviton)<span class="timer" id="timerCool">0.00s</span></div>
+      <div class="rail" id="railCool" style="--active-color:var(--cool-c)"></div>
+    </div>
+  </div>
+
+  <div class="result-banner" id="resultBanner">
+    <div class="result-headline">COOL finishes 1.35&times; faster overall</div>
+    <div class="result-sub">But not everywhere: <b>blur, edges, and feature detection</b> are the big wins &mdash;<br>resize and warp actually ran <b>slower</b> on COOL. The net win comes from the big gains outweighing the small regressions.</div>
+  </div>
+</div>
+
+<script>
+// Real measured per-op mean seconds, 1080p, from an actual AWS run (benchmarks/repro5.json)
+var ops = [
+  { key: "resize",   label: "Resize",   img: "ex_resize.png",   baseline: 0.01543, cool: 0.01928 },
+  { key: "blur",     label: "Blur",     img: "ex_blur.png",     baseline: 0.09021, cool: 0.06307 },
+  { key: "edges",    label: "Edges",    img: "ex_edges.png",    baseline: 0.42258, cool: 0.25224 },
+  { key: "features", label: "Features", img: "ex_features.png",baseline: 1.32284, cool: 0.93322 },
+  { key: "warp",     label: "Warp",     img: "ex_warp.png",     baseline: 0.10129, cool: 0.17379 },
+];
+var SCALE = 10; // real-seconds -> animation-seconds multiplier, for watchability
+
+function buildRail(railId, key) {
+  var rail = document.getElementById(railId);
+  var station0 = document.createElement("div");
+  station0.className = "station";
+  station0.innerHTML = '<img src="ex_original.png"><div class="station-label">Start</div>';
+  rail.appendChild(station0);
+
+  var stations = [station0];
+  var connectors = [];
+  ops.forEach(function (op, i) {
+    var conn = document.createElement("div");
+    conn.className = "connector";
+    var fill = document.createElement("div");
+    fill.className = "fill";
+    conn.appendChild(fill);
+    rail.appendChild(conn);
+    connectors.push(fill);
+
+    var st = document.createElement("div");
+    st.className = "station";
+    st.innerHTML = '<img src="' + op.img + '"><div class="station-label">' + op.label + '</div>';
+    rail.appendChild(st);
+    stations.push(st);
+  });
+  return { stations: stations, connectors: connectors };
+}
+
+var baselineRail = buildRail("railBaseline", "baseline");
+var coolRail = buildRail("railCool", "cool");
+
+// Build cumulative timeline (in animation-seconds) for each lane
+function cumulative(key) {
+  var acc = 0;
+  return ops.map(function (op) {
+    var start = acc;
+    acc += op[key] * SCALE;
+    return { start: start, end: acc };
+  });
+}
+var baselineTimeline = cumulative("baseline");
+var coolTimeline = cumulative("cool");
+var baselineTotal = baselineTimeline[baselineTimeline.length - 1].end;
+var coolTotal = coolTimeline[coolTimeline.length - 1].end;
+
+function updateLane(now, timeline, rail, timerEl, realTotal) {
+  var elapsedReal = 0;
+  timeline.forEach(function (seg, i) {
+    var station = rail.stations[i + 1];
+    var connector = rail.connectors[i];
+    if (now >= seg.end) {
+      connector.style.width = "100%";
+      station.classList.add("done");
+      station.classList.remove("active");
+    } else if (now >= seg.start) {
+      var pct = ((now - seg.start) / (seg.end - seg.start)) * 100;
+      connector.style.width = pct.toFixed(1) + "%";
+      station.classList.add("active");
+    } else {
+      connector.style.width = "0%";
+      station.classList.remove("active", "done");
+    }
+  });
+  var clampedNow = Math.min(now, timeline[timeline.length - 1].end);
+  var realElapsed = (clampedNow / SCALE);
+  timerEl.textContent = realElapsed.toFixed(2) + "s";
+}
+
+var start = performance.now();
+function tick() {
+  var now = (performance.now() - start) / 1000;
+  updateLane(now, baselineTimeline, baselineRail, document.getElementById("timerBaseline"));
+  updateLane(now, coolTimeline, coolRail, document.getElementById("timerCool"));
+
+  if (now >= baselineTotal + 0.8) {
+    document.getElementById("resultBanner").classList.add("show");
+  }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
