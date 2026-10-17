@@ -1,0 +1,355 @@
+<title>COOL Auto-Tuner Run</title>
+<style>
+:root {
+  --bg: #f9f9f7;
+  --surface: #fcfcfb;
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --border: rgba(11,11,11,0.10);
+  --series-baseline: #c3c2b7;
+  --series-cool: #2a78d6;
+  --good: #0ca30c;
+  --pending-bg: #eeede9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d0d0d;
+    --surface: #1a1a19;
+    --text-primary: #f0efec;
+    --text-secondary: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --border: rgba(255,255,255,0.10);
+    --series-baseline: #52514e;
+    --series-cool: #3987e5;
+    --good: #0ca30c;
+    --pending-bg: #232322;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d0d0d;
+  --surface: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --border: rgba(255,255,255,0.10);
+  --series-baseline: #52514e;
+  --series-cool: #3987e5;
+  --good: #0ca30c;
+  --pending-bg: #232322;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+.stage {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+h1 {
+  font-size: clamp(26px, 4vw, 34px);
+  margin: 4px 0 0;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.pipeline {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+@media (max-width: 760px) {
+  .pipeline { grid-template-columns: repeat(2, 1fr); }
+}
+.step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  opacity: 0.4;
+  transform: translateY(4px);
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
+  min-height: 118px;
+  justify-content: center;
+}
+.step.active {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--series-cool);
+}
+.step.done {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: var(--good);
+}
+.step-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--pending-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.step.active .step-icon {
+  background: var(--series-cool);
+  color: white;
+  animation: pulse 1s ease-in-out infinite;
+}
+.step.done .step-icon {
+  background: var(--good);
+  color: white;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(42,120,214,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(42,120,214,0); }
+}
+.step-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+.step-value {
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  min-height: 14px;
+}
+
+.verdict {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--good);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  min-height: 26px;
+}
+.verdict.show { opacity: 1; }
+
+.results {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.results.show { opacity: 1; transform: translateY(0); }
+
+.hero-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.hero-number {
+  font-size: clamp(48px, 10vw, 68px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--series-cool);
+  font-variant-numeric: tabular-nums;
+}
+.hero-caption {
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 44ch;
+  text-align: center;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px 14px;
+}
+.legend {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  justify-content: center;
+}
+.legend-item { display: flex; align-items: center; gap: 6px; }
+.swatch { width: 10px; height: 10px; border-radius: 2px; }
+.chart-group { display: flex; flex-direction: column; gap: 16px; }
+.chart-row-label { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.bar-line { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.bar-track { flex: 1; height: 20px; }
+.bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  min-width: 2px;
+  width: 0;
+  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bar-fill.baseline { background: var(--series-baseline); }
+.bar-fill.cool { background: var(--series-cool); }
+.bar-value { font-size: 11px; font-weight: 600; width: 56px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+</style>
+
+<div class="stage">
+  <div>
+    <div class="eyebrow">COOL Auto-Tuner &middot; Live on AWS Graviton</div>
+    <h1>Watching the agent run</h1>
+  </div>
+
+  <div class="pipeline" id="pipeline"></div>
+  <div class="verdict" id="verdict"></div>
+
+  <div class="results" id="results">
+    <div class="hero-row">
+      <div class="hero-number" id="heroNumber">0%</div>
+      <div class="hero-caption">faster than genuine baseline OpenCV 5.0.0, averaged across 25 independent measurements.</div>
+    </div>
+    <div class="card">
+      <div class="legend">
+        <div class="legend-item"><span class="swatch" style="background:var(--series-baseline)"></span>Baseline</div>
+        <div class="legend-item"><span class="swatch" style="background:var(--series-cool)"></span>COOL</div>
+      </div>
+      <div class="chart-group" id="chartGroup"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Real data from an actual run (see docs/REPORT.md / benchmarks/).
+  var steps = [
+    { label: "Launch c8g.large on AWS", icon: "1", duration: 1400, value: "us-east-1" },
+    { label: "Install baseline OpenCV 5.0.0", icon: "2", duration: 1300, value: "pip venv" },
+    { label: "Run baseline benchmark", icon: "3", duration: 1600, value: "2.01s" },
+    { label: "Switch to COOL 4.14.0-pre", icon: "4", duration: 1200, value: "Graviton" },
+    { label: "Run COOL benchmark", icon: "5", duration: 1600, value: "1.43s" },
+    { label: "Evaluate speedup", icon: "6", duration: 1400, value: "1.35x" },
+  ];
+
+  var pipelineEl = document.getElementById("pipeline");
+  steps.forEach(function (s) {
+    var el = document.createElement("div");
+    el.className = "step";
+    el.innerHTML =
+      '<div class="step-icon">' + s.icon + '</div>' +
+      '<div class="step-label">' + s.label + '</div>' +
+      '<div class="step-value"></div>';
+    pipelineEl.appendChild(el);
+  });
+
+  var stepEls = pipelineEl.querySelectorAll(".step");
+  var t = 300;
+  steps.forEach(function (s, i) {
+    setTimeout(function () {
+      stepEls[i].classList.add("active");
+    }, t);
+    t += s.duration;
+    setTimeout(function () {
+      stepEls[i].classList.remove("active");
+      stepEls[i].classList.add("done");
+      stepEls[i].querySelector(".step-value").textContent = s.value;
+    }, t);
+  });
+
+  setTimeout(function () {
+    var v = document.getElementById("verdict");
+    v.textContent = "TARGET MET — 1.35x ≥ 1.25x target";
+    v.classList.add("show");
+  }, t + 300);
+
+  setTimeout(function () {
+    document.getElementById("results").classList.add("show");
+    animateResults();
+  }, t + 1200);
+
+  function animateResults() {
+    var data = [
+      { label: "480p",  baseline: 0.430, cool: 0.430 / 1.325 },
+      { label: "1080p", baseline: 2.010, cool: 2.010 / 1.368 },
+      { label: "4K",    baseline: 7.623, cool: 7.623 / 1.395 }
+    ];
+    var maxVal = Math.max.apply(null, data.map(function (d) { return d.baseline; }));
+    var group = document.getElementById("chartGroup");
+
+    data.forEach(function (d) {
+      var row = document.createElement("div");
+      var label = document.createElement("div");
+      label.className = "chart-row-label";
+      label.textContent = d.label;
+      row.appendChild(label);
+
+      [["baseline", d.baseline], ["cool", d.cool]].forEach(function (entry) {
+        var cls = entry[0], val = entry[1];
+        var line = document.createElement("div");
+        line.className = "bar-line";
+        var trackWrap = document.createElement("div");
+        trackWrap.className = "bar-track";
+        var fill = document.createElement("div");
+        fill.className = "bar-fill " + cls;
+        fill.dataset.w = ((val / maxVal) * 100).toFixed(1) + "%";
+        trackWrap.appendChild(fill);
+        var value = document.createElement("span");
+        value.className = "bar-value";
+        value.textContent = val.toFixed(2) + "s";
+        line.appendChild(trackWrap);
+        line.appendChild(value);
+        row.appendChild(line);
+      });
+      group.appendChild(row);
+    });
+
+    requestAnimationFrame(function () {
+      document.querySelectorAll(".bar-fill").forEach(function (el, i) {
+        setTimeout(function () { el.style.width = el.dataset.w; }, 60 * i);
+      });
+    });
+
+    var hero = document.getElementById("heroNumber");
+    var target = 36;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / 900, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      hero.textContent = Math.round(eased * target) + "%";
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+})();
+</script>
