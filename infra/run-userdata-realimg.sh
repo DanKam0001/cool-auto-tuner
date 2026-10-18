@@ -1,3 +1,6 @@
+#!/bin/bash
+set -x
+mkdir -p /tmp/agent
 cat <<'PYEOF' > /tmp/agent/workload.py
 """
 Defines the benchmark workload: a fixed set of OpenCV operations run against
