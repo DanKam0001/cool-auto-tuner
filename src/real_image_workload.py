@@ -18,7 +18,12 @@ from workload import _time_op  # reuse the exact same timing helper
 
 
 def run_real_image_workload(image_url: str, n_copies: int, repeats: int) -> dict:
-    data = urllib.request.urlopen(image_url, timeout=30).read()
+    req = urllib.request.Request(
+        image_url,
+        headers={"User-Agent": "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 "
+                                "(KHTML, like Gecko) Chrome/120.0 Safari/537.36"},
+    )
+    data = urllib.request.urlopen(req, timeout=30).read()
     arr = np.frombuffer(data, dtype=np.uint8)
     base_img = cv2.imdecode(arr, cv2.IMREAD_COLOR)
     base_img = cv2.resize(base_img, (1920, 1080))
