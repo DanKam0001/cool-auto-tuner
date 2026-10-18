@@ -1,13 +1,18 @@
-# Demo Video Script (target: ~4:30, under the 5:00 limit)
+# Demo Video Script (target: ~4:20, under the 5:00 limit)
 
 Format: facecam + voiceover, cut to screen capture for the demo/results parts.
 Numbers below are real, pulled from `docs/REPORT.md` — don't round them up.
+Timestamp labels below are approximate targets, not exact — actual pacing is driven
+by the real recorded audio. Based on real segment durations: hook+what-it-does
+facecam is ~88s, the live-run/results VO is ~44s, the new real-world segment is
+~60-70s once recorded, the stress-test segment is ~57s, and the close is ~5s —
+total ~4:15-4:25, comfortably under the 5:00 limit.
 
 ---
 
 **[0:00–0:30] Face cam, hook + problem**
 
-> "AWS sells a special, faster build of OpenCV called COOL, optimized for their
+> "AWS sells a special, faster build of OpenCV called COOL, Cloud-Optimized OpenCV Library, optimized for their
 > Graviton chips. The claim is simple: it's faster than regular OpenCV. But it's a
 > paid product — there's no public way to check that claim before you pay for it.
 > So I built an agent that checks it for you, automatically, on real AWS hardware,
@@ -47,7 +52,33 @@ Numbers below are real, pulled from `docs/REPORT.md` — don't round them up.
 > landed between 29 and 46 percent faster, averaging right around 36 percent. This
 > isn't a lucky number — it's consistent."
 
-**[3:30–4:00] Screen capture, the honest failure case**
+**[3:30–4:15] NEW SEGMENT — needs fresh recording. Face cam or VO over `scene_realworld.html`.**
+
+This is now the most important part of the video — the real-world validation flips the
+headline finding. Suggested read (edit freely, keep the numbers exact):
+
+> "So that's the lab result — 36 percent faster, synthetic test images, textbook
+> conditions. But synthetic isn't real. So I pushed it further: I had the agent
+> download real photos — not test data, actual images — across the kinds of things
+> this competition cares about: medical scans, farm fields, retail shelves, traffic
+> cameras, industrial inspection, aerial shots. Same baseline, same COOL, same
+> instance, nine real images.
+>
+> And the 36 percent fell apart. Averaged across all nine, COOL was only 6 percent
+> faster — and it was actually *slower* than baseline in five of the nine images.
+>
+> Here's why: two of the five operations — resize and image warping — were
+> consistently slower on COOL, every single image, no exceptions. Two others — blur
+> and edge detection — were consistently faster, every time. The swing factor is
+> feature detection: it's a strong win on images with lots of distinct objects —
+> buildings, a crowd, products on a shelf — and barely helps, or even hurts, on
+> uniform, repetitive content like a wheat field or dense foliage.
+>
+> So the claim isn't false. It's incomplete. Whether COOL actually helps you depends
+> entirely on what you're processing — and that's exactly the kind of thing you'd
+> never find out from a benchmark page."
+
+**[4:15–4:45] Screen capture, the honest failure case (thread-count stress test)**
 
 - Show the corrected stress-test table from `docs/REPORT.md`.
 
@@ -60,7 +91,7 @@ Numbers below are real, pulled from `docs/REPORT.md` — don't round them up.
 > scales with how much parallelism you give it — that's the kind of detail you only
 > get from actually stress-testing a claim, not from a headline number."
 
-**[4:00–4:30] Face cam, close**
+**[4:45–5:15] Face cam, close**
 
 > "So: real baseline, real AWS Graviton hardware, an agent that adapts instead of
 > running once, and results — good and bad — reported honestly. Code, the full
@@ -70,9 +101,19 @@ Numbers below are real, pulled from `docs/REPORT.md` — don't round them up.
 
 ## Shot list / things to have on screen
 
-1. Terminal or AWS console: instance launching (can be sped up in editing)
-2. Live agent output scrolling (baseline → COOL → evaluate steps)
-3. Results table (from `docs/REPORT.md`, standard runs)
-4. Stress-test table, with the threads=1 row visually highlighted
-5. Architecture diagram (from `docs/REPORT.md`) — optional, if time allows, drop it in
-   around the 0:45 mark instead of just talking
+1. `docs/scene1_hook.html` — hook + what-it-does pipeline, with real OpenCV example
+   images (resize/blur/edges/features/warp shown live)
+2. `docs/scene2_race.html` — baseline vs. COOL race, paced by real per-op timing
+3. `docs/scene_realworld.html` — **the new headline visual**: all 9 real test images
+   with their speedup badges (green = faster, red = slower), the per-operation
+   breakdown, and the "it depends on content" conclusion
+4. `docs/scene3_stress.html` — thread-count stress-test chart
+5. Architecture diagram (from `docs/REPORT.md`) — optional, if time allows
+
+## Recording status
+
+- ✅ Hook, what-it-does, live-run narration, synthetic results recap, stress-test
+  narration, and close — all already recorded (see `clips/final_cut_v1.mp4` for the
+  prior assembly; needs re-editing with the new segment inserted).
+- ⬜ **New real-world validation segment (the [3:30–4:15] block above) still needs to
+  be recorded** — this is the only new audio/facecam needed for the updated script.
