@@ -1,0 +1,908 @@
+appy daemon.
+[[0;32m  OK  [0m] Reached target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Started [0;1;39macpid.service[0m - ACPI event daemon.
+         Starting [0;1;39mapport.service[0m - automatic crash report generation...
+         Starting [0;1;39mchrony.service[0m - chrony, an NTP client/server...
+         Starting [0;1;39mcloud-config.service[0m - Cloud-init: Config Stage...
+[[0;32m  OK  [0m] Started [0;1;39mcron.service[0m - Regular background program processing daemon.
+         Starting [0;1;39mdbus.service[0m - D-Bus System Message Bus...
+[[0;32m  OK  [0m] Started [0;1;39mdmesg.service[0m - Save initial kernel messages after boot.
+         Starting [0;1;39me2scrub_reap.service[0m - Re…ne ext4 Metadata Check Snapshots...
+         Starting [0;1;39mec2-instance-connect-harv…[0mance Connect Host Key Harvesting...
+         Starting [0;1;39mgrub-common.service[0m - Record successful boot for GRUB...
+[[0;32m  OK  [0m] Started [0;1;39mirqbalance.service[0m - irqbalance daemon.
+         Starting [0;1;39mnetworkd-dispatcher.servi…[0mcher daemon for systemd-networkd...
+         Starting [0;1;39mpolkit.service[0m - Authorization Manager...
+         Starting [0;1;39mrsyslog.service[0m - System Logging Service...
+[[0;32m  OK  [0m] Started [0;1;39msnap.amazon-ssm-agent.amaz…[0m amazon-ssm-agent.amazon-ssm-agent.
+[[0;32m  OK  [0m] Reached target [0;1;39mgetty-pre.target[0m - Preparation for Logins.
+         Starting [0;1;39msnapd.seeded.service[0m - Wait until snapd is fully seeded...
+         Starting [0;1;39msnapd.service[0m - Snap Daemon...
+         Starting [0;1;39msysstat.service[0m - Resets System Activity Logs...
+         Starting [0;1;39msystemd-logind.service[0m - User Login Management...
+         Starting [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+         Starting [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup...
+         Starting [0;1;39mudisks2.service[0m - Disk Manager...
+[[0;32m  OK  [0m] Finished [0;1;39me2scrub_reap.service[0m - Re…line ext4 Metadata Check Snapshots.
+[[0;32m  OK  [0m] Finished [0;1;39msysstat.service[0m - Resets System Activity Logs.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+         Starting [0;1;39mplymouth-quit-wait.servic…[0md until boot process finishes up...
+         Starting [0;1;39mplymouth-quit.service[0m - Terminate Plymouth Boot Screen...
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-quit-wait.servic…[0mold until boot process finishes up.
+[[0;32m  OK  [0m] Started [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
+         Starting [0;1;39msetvtrgb.service[0m - Set console scheme...
+Cloud-init v. 25.2-0ubuntu1~24.04.1 running 'modules:config' at Sun, 18 Oct 2026 04:20:06 +0000. Up 47.83 seconds.
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-quit.service[0m - Terminate Plymouth Boot Screen.
+[[0;32m  OK  [0m] Finished [0;1;39mgrub-common.service[0m - Record successful boot for GRUB.
+         Starting [0;1;39mgrub-initrd-fallback.service[0m - GRUB failed boot detection...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-logind.service[0m - User Login Management.
+[[0;32m  OK  [0m] Started [0;1;39munattended-upgrades.service[0m - Unattended Upgrades Shutdown.
+[[0;32m  OK  [0m] Finished [0;1;39mgrub-initrd-fallback.service[0m - GRUB failed boot detection.
+[[0;32m  OK  [0m] Finished [0;1;39msetvtrgb.service[0m - Set console scheme.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
+[[0;32m  OK  [0m] Started [0;1;39mgetty@tty1.service[0m - Getty on tty1.
+[[0;32m  OK  [0m] Reached target [0;1;39mgetty.target[0m - Login Prompts.
+[[0;32m  OK  [0m] Started [0;1;39mdbus.service[0m - D-Bus System Message Bus.
+         Starting [0;1;39mcontainerd.service[0m - containerd container runtime...
+         Starting [0;1;39msystemd-hostnamed.service[0m - Hostname Service...
+[[0;32m  OK  [0m] Started [0;1;39mrsyslog.service[0m - System Logging Service.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-hostnamed.service[0m - Hostname Service.
+[[0;32m  OK  [0m] Started [0;1;39mpolkit.service[0m - Authorization Manager.
+         Starting [0;1;39mModemManager.service[0m - Modem Manager...
+[[0;32m  OK  [0m] Finished [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup.
+[[0;32m  OK  [0m] Started [0;1;39mnetworkd-dispatcher.servic…[0matcher daemon for systemd-networkd.
+[[0;32m  OK  [0m] Finished [0;1;39mapport.service[0m - automatic crash report generation.
+[[0;32m  OK  [0m] Started [0;1;39mchrony.service[0m - chrony, an NTP client/server.
+[[0;32m  OK  [0m] Reached target [0;1;39mtime-sync.target[0m - System Time Synchronized.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+[[0;32m  OK  [0m] Started [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Started [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Started [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Started [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Started [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Started [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Started [0;1;39mmotd-news.timer[0m - Message of the Day.
+[[0;32m  OK  [0m] Started [0;1;39msysstat-collect.timer[0m - Ru…y accounting tool every 10 minutes.
+[[0;32m  OK  [0m] Started [0;1;39msysstat-summary.timer[0m - Ge… of yesterday's process accounting.
+[[0;32m  OK  [0m] Started [0;1;39mupdate-notifier-motd.timer[0m… a new version of Ubuntu available.
+[[0;32m  OK  [0m] Reached target [0;1;39mtimers.target[0m - Timer Units.
+         Starting [0;1;39mdpkg-db-backup.service[0m - …ily dpkg database backup service...
+         Starting [0;1;39me2scrub_all.service[0m - Onl…tadata Check for All Filesystems...
+         Starting [0;1;39mlogrotate.service[0m - Rotate log files...
+[[0;32m  OK  [0m] Finished [0;1;39me2scrub_all.service[0m - Onl…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Started [0;1;39mudisks2.service[0m - Disk Manager.
+[[0;32m  OK  [0m] Started [0;1;39mModemManager.service[0m - Modem Manager.
+[[0;32m  OK  [0m] Finished [0;1;39mec2-instance-connect-harv…[0mstance Connect Host Key Harvesting.
+[[0;32m  OK  [0m] Finished [0;1;39mcloud-config.service[0m - Cloud-init: Config Stage.
+         Starting [0;1;39mhibinit-agent.service[0m - E…instance hibernation setup agent...
+[[0;32m  OK  [0m] Started [0;1;39mhibinit-agent.service[0m - EC2 instance hibernation setup agent.
+[[0;32m  OK  [0m] Finished [0;1;39mdpkg-db-backup.service[0m - Daily dpkg database backup service.
+[[0;32m  OK  [0m] Finished [0;1;39mlogrotate.service[0m - Rotate log files.
+2026/10/18 04:20:12Z: SSM Agent unable to acquire credentials: <error>no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 202413277486
+	status code: 400, request id: e6b59200-069b-4aa1-a1ca-d05518a53356</error>
+
+Ubuntu 24.04.3 LTS ip-172-31-39-232 ttyS0
+ip-172-31-39-232 login: [   73.036633] cloud-init[1392]: Cloud-init v. 25.2-0ubuntu1~24.04.1 running 'modules:final' at Sun, 18 Oct 2026 04:20:32 +0000. Up 73.01 seconds.
++ mkdir -p /tmp/agent
++ cat
++ cat
++ cat
++ cat
++ echo ===SETUP_START===
+===SETUP_START===
++ pip install --break-system-packages -q numpy
++ tail -5
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
++ python3 -m venv /tmp/baseline_venv
++ /tmp/baseline_venv/bin/pip install -q numpy opencv-python-headless
++ tail -10
++ cd /tmp/agent
++ python3 discover_envs.py
++ tee /tmp/agent/discover_output.txt
+===DISCOVER_ENVS_START===
+{
+  "baseline": {
+    "root": "/install-4x",
+    "lib_dir": "/install-4x/lib",
+    "cv2_so_matches": [],
+    "cv2_dir_matches": [],
+    "python_path": null,
+    "setup_vars_script": [
+      "/install-4x/bin/setup_vars_opencv4.sh"
+    ]
+  },
+  "cool": {
+    "root": "/install-cool",
+    "lib_dir": "/install-cool/lib",
+    "cv2_so_matches": [
+      "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so"
+    ],
+    "cv2_dir_matches": [
+      "/install-cool/lib/python3.12/site-packages/cv2"
+    ],
+    "python_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12",
+    "setup_vars_script": [
+      "/install-cool/bin/setup_vars_opencv4.sh"
+    ]
+  }
+}
+===DISCOVER_ENVS_END===
++ python3 -c 'import json,re; txt=open("/tmp/agent/discover_output.txt").read(); start=txt.index("{"); end=txt.rindex("}")+1; json.dump(json.loads(txt[start:end]), open("/tmp/agent/build_envs.json","w"))'
++ echo ===SETUP_END===
+===SETUP_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/g720ae195bc136675cbd083dec9b36f79aa890e151ae7137e3c59928dda873b229ff31949e5eca2fe8b0b53d77e3016261b0c9229e3bb990970b85ace706df299_1280.jpg medical
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "medical",
+  "image_url": "https://pixabay.com/get/g720ae195bc136675cbd083dec9b36f79aa890e151ae7137e3c59928dda873b229ff31949e5eca2fe8b0b53d77e3016261b0c9229e3bb990970b85ace706df299_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/g720ae195bc136675cbd083dec9b36f79aa890e151ae7137e3c59928dda873b229ff31949e5eca2fe8b0b53d77e3016261b0c9229e3bb990970b85ace706df299_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.015150753700001473,
+        "std": 5.942721054276227e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.09008362569999946,
+        "std": 0.00014620356171160724,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.13038395959999888,
+        "std": 0.0010131234470612041,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.7125115467,
+        "std": 0.0005928956849844678,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10120235859999979,
+        "std": 0.0001075703484119741,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 1.0493322442999997,
+    "total_seconds_std": 0.0011892951134709604,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/g720ae195bc136675cbd083dec9b36f79aa890e151ae7137e3c59928dda873b229ff31949e5eca2fe8b0b53d77e3016261b0c9229e3bb990970b85ace706df299_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.0192908705000022,
+        "std": 0.0002195866775284096,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06244320110000103,
+        "std": 0.0001604959064554584,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.08114973320000018,
+        "std": 0.00018858250637301981,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.5562112112999984,
+        "std": 0.0009709644738204159,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.17250286829999767,
+        "std": 0.0012824445374168085,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.8915978843999994,
+    "total_seconds_std": 0.0016422474258218293,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 1.1769119943640822,
+  "per_op_speedup": {
+    "resize_half": 0.7853846564363046,
+    "gaussian_blur_15": 1.4426490652798705,
+    "canny_edge": 1.6067084198373998,
+    "orb_detect_compute": 1.2810089624671364,
+    "warp_affine": 0.5866705846536997
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/gd792e268c4e2740a69b9ea3151ee5aa038a499e955cefd4f99f01f37f34abb2ec92bc78d2cc9d3b7820c67ace7a607fae420f8b012ecf00b164cc28cf714b959_1280.jpg agriculture
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "agriculture",
+  "image_url": "https://pixabay.com/get/gd792e268c4e2740a69b9ea3151ee5aa038a499e955cefd4f99f01f37f34abb2ec92bc78d2cc9d3b7820c67ace7a607fae420f8b012ecf00b164cc28cf714b959_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/gd792e268c4e2740a69b9ea3151ee5aa038a499e955cefd4f99f01f37f34abb2ec92bc78d2cc9d3b7820c67ace7a607fae420f8b012ecf00b164cc28cf714b959_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.015259428000001662,
+        "std": 4.4433110153724046e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.08965621619999808,
+        "std": 0.0002443064546977614,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.06338687719999428,
+        "std": 0.0001611207817209362,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.3821837114999965,
+        "std": 0.0006387797166912188,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10074594790000332,
+        "std": 0.00011932333230711279,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.6512321807999939,
+    "total_seconds_std": 0.000714071029713624,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/gd792e268c4e2740a69b9ea3151ee5aa038a499e955cefd4f99f01f37f34abb2ec92bc78d2cc9d3b7820c67ace7a607fae420f8b012ecf00b164cc28cf714b959_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.019344063800002687,
+        "std": 9.282917664063921e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.0625992191000023,
+        "std": 0.0002897795594140671,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.04833778169999903,
+        "std": 0.0010350181486087607,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.383613366000003,
+        "std": 0.0008922212212320152,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.1728487601000012,
+        "std": 0.00019353284898419106,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.6867431907000082,
+    "total_seconds_std": 0.0014132818856449631,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 0.9482906996663231,
+  "per_op_speedup": {
+    "resize_half": 0.7888429317525071,
+    "gaussian_blur_15": 1.4322257927334878,
+    "canny_edge": 1.3113319430625745,
+    "orb_detect_compute": 0.9962731890316708,
+    "warp_affine": 0.5828560635420065
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/g013c99334d09135a4ea2d6e6024ac77aa66486ac4b9617b5eda446794b8559350f8a54a2e1cb117fa5b10a854dfd8bcc849f71f61dcc6ca7924093dcd49f5b76_1280.jpg retail
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "retail",
+  "image_url": "https://pixabay.com/get/g013c99334d09135a4ea2d6e6024ac77aa66486ac4b9617b5eda446794b8559350f8a54a2e1cb117fa5b10a854dfd8bcc849f71f61dcc6ca7924093dcd49f5b76_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/g013c99334d09135a4ea2d6e6024ac77aa66486ac4b9617b5eda446794b8559350f8a54a2e1cb117fa5b10a854dfd8bcc849f71f61dcc6ca7924093dcd49f5b76_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.015256687099994792,
+        "std": 0.00015134390725187968,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.09013698759999897,
+        "std": 0.0001590218327322106,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.1568399718999956,
+        "std": 0.0009140773696157744,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.8194189740999974,
+        "std": 0.0005038899370891354,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10167983529999844,
+        "std": 0.00010851348809755628,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 1.1833324559999852,
+    "total_seconds_std": 0.001072105687416246,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/g013c99334d09135a4ea2d6e6024ac77aa66486ac4b9617b5eda446794b8559350f8a54a2e1cb117fa5b10a854dfd8bcc849f71f61dcc6ca7924093dcd49f5b76_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.01915743799999916,
+        "std": 0.00020224719312713155,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06269566710000447,
+        "std": 0.0002967407529919434,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.10215698839999732,
+        "std": 0.00022778286372075637,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.6317786862000048,
+        "std": 0.0023857165949909376,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.17220721980000064,
+        "std": 0.00033012796372066256,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.9879959995000064,
+    "total_seconds_std": 0.0024457048429163243,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 1.1977097646132497,
+  "per_op_speedup": {
+    "resize_half": 0.7963845217714113,
+    "gaussian_blur_15": 1.4376908607770844,
+    "canny_edge": 1.5352838249879313,
+    "orb_detect_compute": 1.297003194312558,
+    "warp_affine": 0.5904504783137905
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/g54a99b2762022997d84da6e61f1053f642e633e07907ee602f2fd4374bcb0041750bce8ec239668351ccfe7f5efa88265c6323edc17f1aee65771f2ffecaf04b_1280.jpg sports
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "sports",
+  "image_url": "https://pixabay.com/get/g54a99b2762022997d84da6e61f1053f642e633e07907ee602f2fd4374bcb0041750bce8ec239668351ccfe7f5efa88265c6323edc17f1aee65771f2ffecaf04b_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/g54a99b2762022997d84da6e61f1053f642e633e07907ee602f2fd4374bcb0041750bce8ec239668351ccfe7f5efa88265c6323edc17f1aee65771f2ffecaf04b_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.015203602500002944,
+        "std": 0.0001020784547198034,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.09030934359999492,
+        "std": 0.0002302240678063372,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.09103563010000074,
+        "std": 0.00013526036017504891,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.5586588065000001,
+        "std": 0.000557756552725372,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10104135230000111,
+        "std": 0.00012637718294542804,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.8562487349999998,
+    "total_seconds_std": 0.0006393606664686816,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/g54a99b2762022997d84da6e61f1053f642e633e07907ee602f2fd4374bcb0041750bce8ec239668351ccfe7f5efa88265c6323edc17f1aee65771f2ffecaf04b_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.019068052600005103,
+        "std": 0.00012188824104954252,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06244897879999769,
+        "std": 0.0001126522178043368,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.064840769099996,
+        "std": 0.00023314931077781948,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.48110683870000914,
+        "std": 0.005820016553850695,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.17438362259999848,
+        "std": 0.0008659963353713433,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.8018482618000065,
+    "total_seconds_std": 0.005891048141593419,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 1.0678438500045806,
+  "per_op_speedup": {
+    "resize_half": 0.797333782265677,
+    "gaussian_blur_15": 1.4461300302319477,
+    "canny_edge": 1.4039875122333543,
+    "orb_detect_compute": 1.1611948980179596,
+    "warp_affine": 0.5794199638332436
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/g6b3b35cd61636ce3772928f07c949d6c90c3cafb90b649cfb8087d5a0e0ec476a81e7b7f35073fc0df199407b1c319f08b79100c48f341d0c7886fb9e961214e_1280.jpg plain
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "plain",
+  "image_url": "https://pixabay.com/get/g6b3b35cd61636ce3772928f07c949d6c90c3cafb90b649cfb8087d5a0e0ec476a81e7b7f35073fc0df199407b1c319f08b79100c48f341d0c7886fb9e961214e_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/g6b3b35cd61636ce3772928f07c949d6c90c3cafb90b649cfb8087d5a0e0ec476a81e7b7f35073fc0df199407b1c319f08b79100c48f341d0c7886fb9e961214e_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.018228008000005503,
+        "std": 0.00458361143769925,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.12346266779999837,
+        "std": 0.03338075600214032,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.06195911270000352,
+        "std": 0.00016324948560729894,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.3408039559999878,
+        "std": 0.000678766641804319,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10171666869999854,
+        "std": 0.0006209264328951011,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.6461704131999937,
+    "total_seconds_std": 0.033706932362199314,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/g6b3b35cd61636ce3772928f07c949d6c90c3cafb90b649cfb8087d5a0e0ec476a81e7b7f35073fc0df199407b1c319f08b79100c48f341d0c7886fb9e961214e_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.019083639400002995,
+        "std": 0.0001316922850689826,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06267795320000005,
+        "std": 0.0007094843563932201,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.05380908630000079,
+        "std": 0.0001638526557654072,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.36451256980000435,
+        "std": 0.0010532620355788427,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.17128234760000396,
+        "std": 0.00038491851490487014,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.6713655963000121,
+    "total_seconds_std": 0.0013435333198038026,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 0.9624717393341682,
+  "per_op_speedup": {
+    "resize_half": 0.9551641391841978,
+    "gaussian_blur_15": 1.9697941859403008,
+    "canny_edge": 1.1514618991031373,
+    "orb_detect_compute": 0.9349580350191362,
+    "warp_affine": 0.5938537749233663
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/g3fe0cd49a997a456f3d9659207f3a2332ef1c895de05c4711b10816d46bb916b8464569f3301854f0f8a58f9854bb83c65c98c3ca4754d88d0396385b51db417_1280.jpg forest
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "forest",
+  "image_url": "https://pixabay.com/get/g3fe0cd49a997a456f3d9659207f3a2332ef1c895de05c4711b10816d46bb916b8464569f3301854f0f8a58f9854bb83c65c98c3ca4754d88d0396385b51db417_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/g3fe0cd49a997a456f3d9659207f3a2332ef1c895de05c4711b10816d46bb916b8464569f3301854f0f8a58f9854bb83c65c98c3ca4754d88d0396385b51db417_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.01522195299999396,
+        "std": 9.128696798239486e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.08971726229999888,
+        "std": 0.0001461974404585117,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.048233494699999824,
+        "std": 0.0001378278238578104,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.33939370439999833,
+        "std": 0.0006251967050438888,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10208103999999593,
+        "std": 0.000425032576077532,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.5946474543999869,
+    "total_seconds_std": 0.0007875449967298737,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/g3fe0cd49a997a456f3d9659207f3a2332ef1c895de05c4711b10816d46bb916b8464569f3301854f0f8a58f9854bb83c65c98c3ca4754d88d0396385b51db417_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.019469436999995083,
+        "std": 0.00028212843190949274,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06270707060000405,
+        "std": 0.00025967373603582114,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.0341323272000011,
+        "std": 0.00014400257421406918,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.3648212701999995,
+        "std": 0.0013214843492847332,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.17274496589999727,
+        "std": 0.00014259995803505424,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.653875070899997,
+    "total_seconds_std": 0.0013908340217635184,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 0.9094205925017315,
+  "per_op_speedup": {
+    "resize_half": 0.7818383757063856,
+    "gaussian_blur_15": 1.430735983064613,
+    "canny_edge": 1.413132319322143,
+    "orb_detect_compute": 0.9303013067575214,
+    "warp_affine": 0.5909349628115417
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ echo ===INSTANCE_SELF_SHUTDOWN===
+===INSTANCE_SELF_SHUTDOWN===
++ shutdown -h now
+ci-info: no authorized SSH keys fingerprints found for user ubuntu.
+[[0;32m  OK  [0m] Stopped [0;1;39munattended-upgrades.service[0m - Unattended Upgrades Shutdown.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-modprobe.slice[0m - Slice /system/modprobe.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgraphical.target[0m - Graphical Interface.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtimers.target[0m - Timer Units.
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Stopped [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Stopped [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Stopped [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Stopped [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Stopped [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Stopped [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Stopped [0;1;39mmotd-news.timer[0m - Message of the Day.
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat-collect.timer[0m - Ru…y accounting tool every 10 minutes.
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat-summary.timer[0m - Ge… of yesterday's process accounting.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
+[[0;32m  OK  [0m] Stopped [0;1;39mupdate-notifier-download.t…[0mhat failed at package install time.
+[[0;32m  OK  [0m] Stopped [0;1;39mupdate-notifier-motd.timer[0m… a new version of Ubuntu available.
+[[0;32m  OK  [0m] Closed [0;1;39mcloud-init-hotplugd.socket[0m - cloud-init hotplug hook socket.
+[[0;32m  OK  [0m] Closed [0;1;39mlvm2-lvmpolld.socket[0m - LVM2 poll daemon socket.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-rfkill.socket[0m - Loa…ll Switch Status /dev/rfkill Watch.
+         Stopping [0;1;39macpid.service[0m - ACPI event daemon...
+         Stopping [0;1;39mblk-availability.service[0m - Availability of block devices...
+         Stopping [0;1;39mfinalrd.service[0m - Create …time dir for shutdown pivot root...
+         Stopping [0;1;39mfwupd.service[0m - Firmware update daemon...
+         Stopping [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed...
+         Stopping [0;1;39mudisks2.service[0m - Disk Manager...
+[[0;32m  OK  [0m] Stopped [0;1;39macpid.service[0m - ACPI event daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mfwupd.service[0m - Firmware update daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed.
+[[0;32m  OK  [0m] Stopped [0;1;39mblk-availability.service[0m - Availability of block devices.
+[[0;32m  OK  [0m] Stopped [0;1;39mudisks2.service[0m - Disk Manager.
+Received signal 15 resulting in exit. Cause:
+  Filename: /usr/lib/python3.12/selectors.py
+  Function: select
+  Line number: 415
+    Filename: /usr/lib/python3.12/subprocess.py
+    Function: _communicate
+    Line number: 2115
+      Filename: /usr/lib/python3.12/subprocess.py
+      Function: communicate
+      Line number: 1209
+Received signal 15 resulting in exit. Cause:
+  Filename: /usr/lib/python3.12/selectors.py
+  Function: select
+  Line number: 415
+    Filename: /usr/lib/python3.12/subprocess.py
+    Function: _communicate
+    Line number: 2115
+      Filename: /usr/lib/python3.12/subprocess.py
+      Function: communicate
+      Line number: 1209
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-final.service[0m - Cloud-init: Final Stage.
+[[0;32m  OK  [0m] Stopped target [0;1;39mmulti-user.target[0m - Multi-User System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgetty.target[0m - Login Prompts.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtime-sync.target[0m - System Time Synchronized.
+         Stopping [0;1;39mModemManager.service[0m - Modem Manager...
+         Stopping [0;1;39mapport.service[0m - automatic crash report generation...
+         Stopping [0;1;39mchrony.service[0m - chrony, an NTP client/server...
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-config.service[0m - Cloud-init: Config Stage.
+[[0;32m  OK  [0m] Stopped target [0;1;39mcloud-config.target[0m - Cloud-config availability.
+         Stopping [0;1;39mcron.service[0m - Regular ba…ground program processing daemon...
+         Stopping [0;1;39mdocker.service[0m - Docker Application Container Engine...
+         Stopping [0;1;39mgetty@tty1.service[0m - Getty on tty1...
+         Stopping [0;1;39mirqbalance.service[0m - irqbalance daemon...
+         Stopping [0;1;39mnetworkd-dispatcher.servi…[0mcher daemon for systemd-networkd...
+[[0;32m  OK  [0m] Stopped [0;1;39mplymouth-quit.service[0m - Terminate Plymouth Boot Screen.
+         Stopping [0;1;39mrsyslog.service[0m - System Logging Service...
+         Stopping [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0...
+         Stopping [0;1;39msnap.amazon-ssm-agent.ama…[0mmazon-ssm-agent.amazon-ssm-agent...
+[[0;32m  OK  [0m] Stopped [0;1;39msnapd.seeded.service[0m - Wait until snapd is fully seeded.
+         Stopping [0;1;39msnapd.service[0m - Snap Daemon...
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat.service[0m - Resets System Activity Logs.
+         Stopping [0;1;39msystemd-logind.service[0m - User Login Management...
+         Stopping [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup...
+[[0;32m  OK  [0m] Stopped [0;1;39mcron.service[0m - Regular background program processing daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mirqbalance.service[0m - irqbalance daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mnetworkd-dispatcher.servic…[0matcher daemon for systemd-networkd.
+[[0;32m  OK  [0m] Stopped [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
+[[0;32m  OK  [0m] Stopped [0;1;39mrsyslog.service[0m - System Logging Service.
+[[0;32m  OK  [0m] Stopped [0;1;39mgetty@tty1.service[0m - Getty on tty1.
+[[0;32m  OK  [0m] Stopped [0;1;39mModemManager.service[0m - Modem Manager.
+[[0;32m  OK  [0m] Stopped [0;1;39mchrony.service[0m - chrony, an NTP client/server.
+[[0;32m  OK  [0m] Stopped [0;1;39mdocker.service[0m - Docker Application Container Engine.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-serial\x2dget…slice[0m - Slice /system/serial-getty.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgetty-pre.target[0m - Preparation for Logins.
+         Stopping [0;1;39mcontainerd.service[0m - containerd container runtime...
+[[0;32m  OK  [0m] Stopped [0;1;39mplymouth-quit-wait.service[0m…old until boot process finishes up.
+         Starting [0;1;39mplymouth-switch-root-init…[0mll Plymouth To Jump To initramfs...
+         Stopping [0;1;39mpolkit.service[0m - Authorization Manager...
+         Stopping [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-logind.service[0m - User Login Management.
+[[0;32m  OK  [0m] Stopped [0;1;39mpolkit.service[0m - Authorization Manager.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+[[0;32m  OK  [0m] Stopped [0;1;39mcontainerd.service[0m - containerd container runtime.
+[[0;32m  OK  [0m] Stopped [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork-online.target[0m - Network is Online.
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-switch-root-init…[0mTell Plymouth To Jump To initramfs.
+[[0;32m  OK  [0m] Stopped [0;1;39mapport.service[0m - automatic crash report generation.
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs.target[0m - Remote File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
+[[0;32m  OK  [0m] Stopped [0;1;39mfinalrd.service[0m - Create f…untime dir for shutdown pivot root.
+[[0;32m  OK  [0m] Stopped [0;1;39msnapd.service[0m - Snap Daemon.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtime-set.target[0m - System Time Set.
+[[0;1;31m*[0m[0;31m*    [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (5s / 1min)
+M[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (5s / 1min)
+M[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (6s / 1min)
+M[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (6s / 1min)
+M[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (7s / 1min)
+M[K[[0;32m  OK  [0m] Stopped [0;1;39msnap.amazon-ssm-agent.amaz…[0m amazon-ssm-agent.amazon-ssm-agent.
+[K[[0;32m  OK  [0m] Stopped target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork.target[0m - Network.
+[[0;32m  OK  [0m] Stopped target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Stopped [0;1;39macpid.path[0m - ACPI Events Check.
+[[0;32m  OK  [0m] Stopped target [0;1;39mslices.target[0m - Slice Units.
+[[0;32m  OK  [0m] Removed slice [0;1;39muser.slice[0m - User and Session Slice.
+[[0;32m  OK  [0m] Stopped target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Closed [0;1;39macpid.socket[0m - ACPID Listen Socket.
+[[0;32m  OK  [0m] Closed [0;1;39mdocker.socket[0m - Docker Socket for the API.
+[[0;32m  OK  [0m] Closed [0;1;39miscsid.socket[0m - Open-iSCSI iscsid Socket.
+[[0;32m  OK  [0m] Closed [0;1;39mlxd-installer.socket[0m - Helper to install lxd snap on demand.
+[[0;32m  OK  [0m] Closed [0;1;39msnapd.socket[0m - Socket activation for snappy daemon.
+[[0;32m  OK  [0m] Closed [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
+[[0;32m  OK  [0m] Closed [0;1;39msyslog.socket[0m - Syslog Socket.
+[[0;32m  OK  [0m] Closed [0;1;39muuidd.socket[0m - UUID daemon activation socket.
+[[0;32m  OK  [0m] Stopped target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Stopped target [0;1;39mcryptsetup.target[0m - Local Encrypted Volumes.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Stopped target [0;1;39mintegritysetup.targ…[0m Local Integrity Protected Volumes.
+[[0;32m  OK  [0m] Stopped target [0;1;39mswap.target[0m - Swaps.
+[[0;32m  OK  [0m] Stopped target [0;1;39mveritysetup.target[0m - Local Verity Protected Volumes.
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-init.service[0m - Cloud-init: Network Stage.
+         Stopping [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-networkd-wait-onli…[0m Wait for Network to be Configured.
+         Stopping [0;1;39msystemd-networkd.service[0m - Network Configuration...
+         Stopping [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
+         Stopping [0;1;39msystemd-update-utmp.servi…[0mord System Boot/Shutdown in UTMP...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
+[[0;32m  OK  [0m] Unset automount [0;1;39mproc-sys-fs-binfmt…[0mormats File System Automount Point.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-networkd.service[0m - Network Configuration.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-update-utmp.servic…[0mecord System Boot/Shutdown in UTMP.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork-pre.target[0m - Preparation for Network.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-networkd.socket[0m - Network Service Netlink Socket.
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-init-local.service[0m -…ud-init: Local Stage (pre-network).
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup.ser…[0mate Volatile Files and Directories.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39msnapd.mounts.target[0m - Mounted snaps.
+         Unmounting [0;1;39mboot-efi.mount[0m - /boot/efi...
+         Unmounting [0;1;39msnap-amazon\x2dssm\x2da…[0mamazon-ssm-agent, revision 13008...
+         Unmounting [0;1;39msnap-amazon\x2dssm\x2da…[0mamazon-ssm-agent, revision 13348...
+         Unmounting [0;1;39msnap-core22-2293.mount[0m …t unit for core22, revision 2293...
+         Unmounting [0;1;39msnap-core22-2412.mount[0m …t unit for core22, revision 2412...
+         Unmounting [0;1;39msnap-snapd-26869.mount[0m …t unit for snapd, revision 26869...
+         Unmounting [0;1;39msnap-snapd-27407.mount[0m …t unit for snapd, revision 27407...
+[[0;32m  OK  [0m] Unmounted [0;1;39mboot-efi.mount[0m - /boot/efi.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-amazon\x2dssm\x2dag…[0mr amazon-ssm-agent, revision 13008.
+         Unmounting [0;1;39mboot.mount[0m - /boot...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck@dev-disk-by\x…[0mm Check on /dev/disk/by-label/UEFI.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-core22-2412.mount[0m -…unt unit for core22, revision 2412.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-snapd-26869.mount[0m -…unt unit for snapd, revision 26869.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-core22-2293.mount[0m -…unt unit for core22, revision 2293.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-amazon\x2dssm\x2dag…[0mr amazon-ssm-agent, revision 13348.
+[[0;32m  OK  [0m] Unmounted [0;1;39mboot.mount[0m - /boot.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck@dev-disk-by\x…[0mm Check on /dev/disk/by-label/BOOT.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-systemd\x2dfs…slice[0m - Slice /system/systemd-fsck.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-snapd-27407.mount[0m -…unt unit for snapd, revision 27407.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39msnapd.mounts-pre.target[0m - Mounting snaps.
+[[0;32m  OK  [0m] Reached target [0;1;39mumount.target[0m - Unmount All Filesystems.
+         Stopping [0;1;39mlvm2-monitor.service[0m - Mo…ing dmeventd or progress polling...
+         Stopping [0;1;39mmultipathd.service[0m - Devi…pper Multipath Device Controller...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mCreate Static Device Nodes in /dev.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mic Device Nodes in /dev gracefully.
+[[0;32m  OK  [0m] Stopped [0;1;39mmultipathd.service[0m - Devic…Mapper Multipath Device Controller.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-remount-fs.service[0m…mount Root and Kernel File Systems.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck-root.service[0m - File System Check on Root Device.
+[[0;32m  OK  [0m] Stopped [0;1;39mlvm2-monitor.service[0m - Mon…using dmeventd or progress polling.
+[[0;32m  OK  [0m] Reached target [0;1;39mshutdown.target[0m - System Shutdown.
+[[0;32m  OK  [0m] Reached target [0;1;39mfinal.target[0m - Late Shutdown Services.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-poweroff.service[0m - System Power Off.
+[[0;32m  OK  [0m] Reached target [0;1;39mpoweroff.target[0m - System Power Off.
+[  222.895577] reboot: Power down
