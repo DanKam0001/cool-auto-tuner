@@ -1,0 +1,822 @@
+s.mount[0m - FUSE Control File System...
+[   13.559641] systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+         Mounting [0;1;39msys-kernel-config.mount[0m - Kernel Configuration File System...
+[   13.564158] systemd[1]: systemd-repart.service - Repartition Root Disk was skipped because no trigger condition checks were met.
+[   13.566949] systemd[1]: Starting systemd-tmpfiles-setup-dev-early.service - Create Static Device Nodes in /dev gracefully...
+         Starting [0;1;39msystemd-tmpfiles-setup-de…[0m Device Nodes in /dev gracefully...
+[   13.571536] systemd[1]: Mounted sys-fs-fuse-connections.mount - FUSE Control File System.
+[[0;32m  OK  [0m] Mounted [0;1;39msys-fs-fuse[   13.572905] pstore: Using crash dump compression: deflate
+-connections.mount[0m - FUSE Control File System.
+[   13.580960] systemd[1]: Mounted sys-kernel-config.mount - Kernel Configuration File System.
+[   13.582009] pstore: Registered efi_pstore as persistent store backend
+[[0;32m  OK  [0m] Mounted [0;1;39msys-kernel-config.mount[0m - Kernel Configuration File System.
+[   13.584948] systemd[1]: Started systemd-fsckd.service - File System Check Daemon to report status.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-fsckd.service[0m - Fi…stem Check Daemon to report status.
+[   13.587624] systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
+[   13.589070] systemd[1]: Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+[[0;32m  OK  [0m] Finished [0;1;39mmodprobe@efi_pstore.service[0m - Load Kernel Module efi_pstore.
+[   13.607595] systemd[1]: Started systemd-journald.service - Journal Service.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-journald.service[0m - Journal Service.
+[[0;32m  OK  [0m] Finished [0;1;39mkeyboard-setup.service[0m - Set the console keyboard layout.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-fsck-root.service[0m - File System Check on Root Device.
+         Starting [0;1;39msystemd-remount-fs.servic…[0munt Root and Kernel File Systems...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-udev-trigger.service[0m - Coldplug All udev Devices.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup-de…[0mic Device Nodes in /dev gracefully.
+[   13.950606] EXT4-fs (nvme0n1p1): re-mounted 24e9705d-f274-43a3-b90b-e899334603a2 r/w.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-remount-fs.servic…[0mmount Root and Kernel File Systems.
+         Starting [0;1;39mmultipathd.service[0m - Devi…pper Multipath Device Controller...
+         Starting [0;1;39msystemd-journal-flush.ser…[0msh Journal to Persistent Storage...
+         Starting [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed...
+         Starting [0;1;39msystemd-tmpfiles-setup-de…[0meate Static Device Nodes in /dev...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup-de…[0mCreate Static Device Nodes in /dev.
+         Starting [0;1;39msystemd-udevd.service[0m - R…ager for Device Events and Files...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
+         Starting [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables...
+[   14.053838] systemd-journald[195]: Received client request to flush runtime journal.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
+[[0;32m  OK  [0m] Finished [0;1;39mlvm2-monitor.service[0m - Mo…using dmeventd or progress polling.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-udevd.service[0m - Ru…anager for Device Events and Files.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
+[[0;32m  OK  [0m] Reached target [0;1;39mcryptsetup.target[0m - Local Encrypted Volumes.
+[[0;32m  OK  [0m] Started [0;1;39mmultipathd.service[0m - Devic…Mapper Multipath Device Controller.
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+         Mounting [0;1;39msnap-amazon\x2dssm\x2dage…[0mamazon-ssm-agent, revision 13008...
+         Mounting [0;1;39msnap-amazon\x2dssm\x2dage…[0mamazon-ssm-agent, revision 13348...
+         Mounting [0;1;39msnap-core22-2293.mount[0m - …t unit for core22, revision 2293...
+         Mounting [0;1;39msnap-core22-2412.mount[0m - …t unit for core22, revision 2412...
+         Mounting [0;1;39msnap-snapd-26869.mount[0m - …t unit for snapd, revision 26869...
+         Mounting [0;1;39msnap-snapd-27407.mount[0m - …t unit for snapd, revision 27407...
+[[0;32m  OK  [0m] Mounted [0;1;39msnap-amazon\x2dssm\x2dagen…[0mr amazon-ssm-agent, revision 13008.
+[[0;32m  OK  [0m] Mounted [0;1;39msnap-amazon\x2dssm\x2dagen…[0mr amazon-ssm-agent, revision 13348.
+[[0;32m  OK  [0m] Mounted [0;1;39msnap-core22-2412.mount[0m - Mount unit for core22, revision 2412.
+[[0;32m  OK  [0m] Found device [0;1;39mdev-ttyS0.device[0m - /dev/ttyS0.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-rfkill.socket[0m…ll Switch Status /dev/rfkill Watch.
+[[0;32m  OK  [0m] Mounted [0;1;39msnap-snapd-26869.mount[0m - Mount unit for snapd, revision 26869.
+[[0;32m  OK  [0m] Found device [0;1;39mdev-disk-by\x2dlabel-…[0m - Amazon Elastic Block Store BOOT.
+[[0;32m  OK  [0m] Found device [0;1;39mdev-disk-by\x2dlabel-…[0m - Amazon Elastic Block Store UEFI.
+         Starting [0;1;39msystemd-fsck@dev-disk-by\…[0mCheck on /dev/disk/by-label/BOOT...
+         Starting [0;1;39msystemd-fsck@dev-disk-by\…[0mCheck on /dev/disk/by-label/UEFI...
+[[0;32m  OK  [0m] Mounted [0;1;39msnap-core22-2293.mount[0m - Mount unit for core22, revision 2293.
+[[0;32m  OK  [0m] Mounted [0;1;39msnap-snapd-27407.mount[0m - Mount unit for snapd, revision 27407.
+[[0;32m  OK  [0m] Reached target [0;1;39msnapd.mounts.target[0m - Mounted snaps.
+Checking in progress on 1 disk (0.0% complete)[[0;32m  OK  [0m] Finished [0;1;39msystemd-fsck@dev-disk-by\…[0mm Check on /dev/disk/by-label/UEFI.
+Checking in progress on 0 disks (100.0% complete)[[0;32m  OK  [0m] Finished [0;1;39msystemd-fsck@dev-disk-by\…[0mm Check on /dev/disk/by-label/BOOT.
+         Mounting [0;1;39mboot.mount[0m - /boot...
+[[0;32m  OK  [0m] Mounted [0;1;39mboot.mount[0m - /boot.
+         Mounting [0;1;39mboot-efi.mount[0m - /boot/efi...
+[[0;32m  OK  [0m] Mounted [0;1;39mboot-efi.mount[0m - /boot/efi.
+[[0;32m  OK  [0m] Reached target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Listening on [0;1;39msystemd-sysext.socket[0m…tension Image Management (Varlink).
+         Starting [0;1;39mapparmor.service[0m - Load AppArmor profiles...
+         Starting [0;1;39mconsole-setup.service[0m - Set console font and keymap...
+         Starting [0;1;39mfinalrd.service[0m - Create …time dir for shutdown pivot root...
+         Starting [0;1;39mplymouth-read-write.servi…[0mymouth To Write Out Runtime Data...
+         Starting [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
+         Starting [0;1;39mufw.service[0m - Uncomplicated firewall...
+[[0;32m  OK  [0m] Finished [0;1;39mconsole-setup.service[0m - Set console font and keymap.
+[[0;32m  OK  [0m] Finished [0;1;39mfinalrd.service[0m - Create …untime dir for shutdown pivot root.
+[[0;32m  OK  [0m] Finished [0;1;39mufw.service[0m - Uncomplicated firewall.
+         Mounting [0;1;39mproc-sys-fs-binfmt_misc.m…[0mcutable File Formats File System...
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-read-write.servi…[0mPlymouth To Write Out Runtime Data.
+[[0;32m  OK  [0m] Mounted [0;1;39mproc-sys-fs-binfmt_misc.mo…[0mxecutable File Formats File System.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
+[[0;32m  OK  [0m] Finished [0;1;39mapparmor.service[0m - Load AppArmor profiles.
+         Starting [0;1;39msnapd.apparmor.service[0m - …iles managed internally by snapd...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-journal-flush.ser…[0mlush Journal to Persistent Storage.
+         Starting [0;1;39msystemd-tmpfiles-setup.se…[0me Volatile Files and Directories...
+[[0;32m  OK  [0m] Finished [0;1;39msnapd.apparmor.service[0m - …ofiles managed internally by snapd.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-tmpfiles-setup.se…[0mate Volatile Files and Directories.
+         Starting [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
+         Starting [0;1;39msystemd-update-utmp.servi…[0mord System Boot/Shutdown in UTMP...
+         Starting [0;1;39mcloud-init-local.service[0m …-init: Local Stage (pre-network)...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-update-utmp.servi…[0mecord System Boot/Shutdown in UTMP.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
+[[0;32m  OK  [0m] Reached target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
+Cloud-init v. 25.2-0ubuntu1~24.04.1 running 'init-local' at Sun, 18 Oct 2026 01:59:43 +0000. Up 36.81 seconds.
+[[0;32m  OK  [0m] Finished [0;1;39mcloud-init-local.service[0m …ud-init: Local Stage (pre-network).
+[[0;32m  OK  [0m] Reached target [0;1;39mnetwork-pre.target[0m - Preparation for Network.
+         Starting [0;1;39msystemd-networkd.service[0m - Network Configuration...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-networkd.service[0m - Network Configuration.
+[[0;32m  OK  [0m] Reached target [0;1;39mnetwork.target[0m - Network.
+         Starting [0;1;39msystemd-networkd-wait-onl…[0mait for Network to be Configured...
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-networkd-wait-onl…[0m Wait for Network to be Configured.
+         Starting [0;1;39mcloud-init.service[0m - Cloud-init: Network Stage...
+Cloud-init v. 25.2-0ubuntu1~24.04.1 running 'init' at Sun, 18 Oct 2026 01:59:48 +0000. Up 41.74 seconds.
+ci-info: ++++++++++++++++++++++++++++++++++++++Net device info+++++++++++++++++++++++++++++++++++++++
+ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+ci-info: | Device |  Up  |           Address           |      Mask     | Scope  |     Hw-Address    |
+ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+ci-info: | ens34  | True |         172.31.47.44        | 255.255.240.0 | global | 0e:ff:f8:e5:cf:cb |
+ci-info: | ens34  | True | fe80::cff:f8ff:fee5:cfcb/64 |       .       |  link  | 0e:ff:f8:e5:cf:cb |
+ci-info: |   lo   | True |          127.0.0.1          |   255.0.0.0   |  host  |         .         |
+ci-info: |   lo   | True |           ::1/128           |       .       |  host  |         .         |
+ci-info: +--------+------+-----------------------------+---------------+--------+-------------------+
+ci-info: ++++++++++++++++++++++++++++++Route IPv4 info++++++++++++++++++++++++++++++
+ci-info: +-------+-------------+-------------+-----------------+-----------+-------+
+ci-info: | Route | Destination |   Gateway   |     Genmask     | Interface | Flags |
+ci-info: +-------+-------------+-------------+-----------------+-----------+-------+
+ci-info: |   0   |   0.0.0.0   | 172.31.32.1 |     0.0.0.0     |   ens34   |   UG  |
+ci-info: |   1   |  172.31.0.2 | 172.31.32.1 | 255.255.255.255 |   ens34   |  UGH  |
+ci-info: |   2   | 172.31.32.0 |   0.0.0.0   |  255.255.240.0  |   ens34   |   U   |
+ci-info: |   3   | 172.31.32.1 |   0.0.0.0   | 255.255.255.255 |   ens34   |   UH  |
+ci-info: +-------+-------------+-------------+-----------------+-----------+-------+
+ci-info: +++++++++++++++++++Route IPv6 info+++++++++++++++++++
+ci-info: +-------+-------------+---------+-----------+-------+
+ci-info: | Route | Destination | Gateway | Interface | Flags |
+ci-info: +-------+-------------+---------+-----------+-------+
+ci-info: |   0   |  fe80::/64  |    ::   |   ens34   |   U   |
+ci-info: |   2   |    local    |    ::   |   ens34   |   U   |
+ci-info: |   3   |  multicast  |    ::   |   ens34   |   U   |
+ci-info: +-------+-------------+---------+-----------+-------+
+Generating public/private rsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_rsa_key
+Your public key has been saved in /etc/ssh/ssh_host_rsa_key.pub
+The key fingerprint is:
+SHA256:ZvIFOMUSvs0eHbNR1Mfc5vlheH5N+DytptagmutcFoc root@ip-172-31-47-44
+The key's randomart image is:
++---[RSA 3072]----+
+|      .o.  .o. o.|
+|     ..o.  .  . *|
+|      +.. +   .=.|
+|       = o * ..=o|
+|      o S E . ++=|
+|       * o o.  oB|
+|        o o. o .o|
+|       . +. . +  |
+|       .*o ..o   |
++----[SHA256]-----+
+Generating public/private ecdsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ecdsa_key
+Your public key has been saved in /etc/ssh/ssh_host_ecdsa_key.pub
+The key fingerprint is:
+SHA256:qwh/BJp7YRIYVm5tV5Dl/cBqx2OKI/qFDixSuawSWqk root@ip-172-31-47-44
+The key's randomart image is:
++---[ECDSA 256]---+
+|  ..   .+o       |
+|... .  .o o      |
+|.o o o . . +     |
+|. o.o .   o o    |
+|  o= .  So = .   |
+|.oB.o o o.+ .    |
+|o=+* = +..       |
+|E.oo=.+..        |
+|o  o++.          |
++----[SHA256]-----+
+Generating public/private ed25519 key pair.
+Your identification has been saved in /etc/ssh/ssh_host_ed25519_key
+Your public key has been saved in /etc/ssh/ssh_host_ed25519_key.pub
+The key fingerprint is:
+SHA256:y48IeGzGaK5aXr8qcg49K4PEXgcx1MoFGQ69nMcYXUk root@ip-172-31-47-44
+The key's randomart image is:
++--[ED25519 256]--+
+| .o+* oE.        |
+|  o* + .         |
+|  o.@            |
+|   O o           |
+|.   o   S        |
+| + * . . .       |
+|= O X   o        |
+|=BoB o . o       |
+|+B=...+.. .      |
++----[SHA256]-----+
+[[0;32m  OK  [0m] Finished [0;1;39mcloud-init.service[0m - Cloud-init: Network Stage.
+[[0;32m  OK  [0m] Reached target [0;1;39mcloud-config.target[0m - Cloud-config availability.
+[[0;32m  OK  [0m] Reached target [0;1;39mnetwork-online.target[0m - Network is Online.
+[[0;32m  OK  [0m] Reached target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Started [0;1;39macpid.path[0m - ACPI Events Check.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
+[[0;32m  OK  [0m] Started [0;1;39mupdate-notifier-download.t…[0mhat failed at package install time.
+[[0;32m  OK  [0m] Reached target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Listening on [0;1;39macpid.socket[0m - ACPID Listen Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mcloud-init-hotplugd.s…t[0m - cloud-init hotplug hook socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mdbus.socket[0m - D-Bus System Message Bus Socket.
+         Starting [0;1;39mdocker.socket[0m - Docker Socket for the API...
+[[0;32m  OK  [0m] Listening on [0;1;39miscsid.socket[0m - Open-iSCSI iscsid Socket.
+         Starting [0;1;39mlxd-installer.socket[0m - He…er to install lxd snap on demand...
+         Starting [0;1;39msnapd.socket[0m - Socket activation for snappy daemon...
+[[0;32m  OK  [0m] Listening on [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
+[[0;32m  OK  [0m] Listening on [0;1;39muuidd.socket[0m - UUID daemon activation socket.
+[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
+[[0;32m  OK  [0m] Reached target [0;1;39mremote-fs.target[0m - Remote File Systems.
+[[0;32m  OK  [0m] Finished [0;1;39mblk-availability.service[0m - Availability of block devices.
+[[0;32m  OK  [0m] Listening on [0;1;39mdocker.socket[0m - Docker Socket for the API.
+[[0;32m  OK  [0m] Listening on [0;1;39mlxd-installer.socket[0m …lper to install lxd snap on demand.
+[[0;32m  OK  [0m] Listening on [0;1;39msnapd.socket[0m - Socket activation for snappy daemon.
+[[0;32m  OK  [0m] Reached target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Reached target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Started [0;1;39macpid.service[0m - ACPI event daemon.
+         Starting [0;1;39mapport.service[0m - automatic crash report generation...
+         Starting [0;1;39mchrony.service[0m - chrony, an NTP client/server...
+         Starting [0;1;39mcloud-config.service[0m - Cloud-init: Config Stage...
+[[0;32m  OK  [0m] Started [0;1;39mcron.service[0m - Regular background program processing daemon.
+         Starting [0;1;39mdbus.service[0m - D-Bus System Message Bus...
+[[0;32m  OK  [0m] Started [0;1;39mdmesg.service[0m - Save initial kernel messages after boot.
+         Starting [0;1;39me2scrub_reap.service[0m - Re…ne ext4 Metadata Check Snapshots...
+         Starting [0;1;39mec2-instance-connect-harv…[0mance Connect Host Key Harvesting...
+         Starting [0;1;39mgrub-common.service[0m - Record successful boot for GRUB...
+[[0;32m  OK  [0m] Started [0;1;39mirqbalance.service[0m - irqbalance daemon.
+         Starting [0;1;39mnetworkd-dispatcher.servi…[0mcher daemon for systemd-networkd...
+         Starting [0;1;39mpolkit.service[0m - Authorization Manager...
+         Starting [0;1;39mrsyslog.service[0m - System Logging Service...
+[[0;32m  OK  [0m] Started [0;1;39msnap.amazon-ssm-agent.amaz…[0m amazon-ssm-agent.amazon-ssm-agent.
+[[0;32m  OK  [0m] Reached target [0;1;39mgetty-pre.target[0m - Preparation for Logins.
+         Starting [0;1;39msnapd.seeded.service[0m - Wait until snapd is fully seeded...
+         Starting [0;1;39msnapd.service[0m - Snap Daemon...
+         Starting [0;1;39msysstat.service[0m - Resets System Activity Logs...
+         Starting [0;1;39msystemd-logind.service[0m - User Login Management...
+         Starting [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+         Starting [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup...
+         Starting [0;1;39mudisks2.service[0m - Disk Manager...
+[[0;32m  OK  [0m] Finished [0;1;39mgrub-common.service[0m - Record successful boot for GRUB.
+         Starting [0;1;39mgrub-initrd-fallback.service[0m - GRUB failed boot detection...
+[[0;32m  OK  [0m] Finished [0;1;39mgrub-initrd-fallback.service[0m - GRUB failed boot detection.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+         Starting [0;1;39mplymouth-quit-wait.servic…[0md until boot process finishes up...
+         Starting [0;1;39mplymouth-quit.service[0m - Terminate Plymouth Boot Screen...
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-quit-wait.servic…[0mold until boot process finishes up.
+[[0;32m  OK  [0m] Started [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
+         Starting [0;1;39msetvtrgb.service[0m - Set console scheme...
+[[0;32m  OK  [0m] Finished [0;1;39me2scrub_reap.service[0m - Re…line ext4 Metadata Check Snapshots.
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-quit.service[0m - Terminate Plymouth Boot Screen.
+[[0;32m  OK  [0m] Started [0;1;39msystemd-logind.service[0m - User Login Management.
+[[0;32m  OK  [0m] Started [0;1;39munattended-upgrades.service[0m - Unattended Upgrades Shutdown.
+[[0;32m  OK  [0m] Finished [0;1;39msysstat.service[0m - Resets System Activity Logs.
+Cloud-init v. 25.2-0ubuntu1~24.04.1 running 'modules:config' at Sun, 18 Oct 2026 01:59:51 +0000. Up 44.29 seconds.
+[[0;32m  OK  [0m] Finished [0;1;39msetvtrgb.service[0m - Set console scheme.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
+[[0;32m  OK  [0m] Started [0;1;39mgetty@tty1.service[0m - Getty on tty1.
+[[0;32m  OK  [0m] Reached target [0;1;39mgetty.target[0m - Login Prompts.
+[[0;32m  OK  [0m] Started [0;1;39mrsyslog.service[0m - System Logging Service.
+[[0;32m  OK  [0m] Started [0;1;39mdbus.service[0m - D-Bus System Message Bus.
+         Starting [0;1;39mcontainerd.service[0m - containerd container runtime...
+         Starting [0;1;39mmodprobe@drm.service[0m - Load Kernel Module drm...
+         Starting [0;1;39msystemd-hostnamed.service[0m - Hostname Service...
+[[0;32m  OK  [0m] Finished [0;1;39mmodprobe@drm.service[0m - Load Kernel Module drm.
+[[0;32m  OK  [0m] Finished [0;1;39mapport.service[0m - automatic crash report generation.
+[[0;32m  OK  [0m] Started [0;1;39mpolkit.service[0m - Authorization Manager.
+         Starting [0;1;39mModemManager.service[0m - Modem Manager...
+[[0;32m  OK  [0m] Started [0;1;39msystemd-hostnamed.service[0m - Hostname Service.
+[[0;32m  OK  [0m] Started [0;1;39mchrony.service[0m - chrony, an NTP client/server.
+[[0;32m  OK  [0m] Started [0;1;39mnetworkd-dispatcher.servic…[0matcher daemon for systemd-networkd.
+[[0;32m  OK  [0m] Reached target [0;1;39mtime-sync.target[0m - System Time Synchronized.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Started [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+[[0;32m  OK  [0m] Started [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Started [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Started [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Started [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Started [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Started [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Started [0;1;39mmotd-news.timer[0m - Message of the Day.
+[[0;32m  OK  [0m] Started [0;1;39msysstat-collect.timer[0m - Ru…y accounting tool every 10 minutes.
+[[0;32m  OK  [0m] Started [0;1;39msysstat-summary.timer[0m - Ge… of yesterday's process accounting.
+[[0;32m  OK  [0m] Started [0;1;39mupdate-notifier-motd.timer[0m… a new version of Ubuntu available.
+[[0;32m  OK  [0m] Reached target [0;1;39mtimers.target[0m - Timer Units.
+         Starting [0;1;39mdpkg-db-backup.service[0m - …ily dpkg database backup service...
+         Starting [0;1;39me2scrub_all.service[0m - Onl…tadata Check for All Filesystems...
+         Starting [0;1;39mlogrotate.service[0m - Rotate log files...
+[[0;32m  OK  [0m] Finished [0;1;39me2scrub_all.service[0m - Onl…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Finished [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup.
+                                                   [[0;32m  OK  [0m] Finished [0;1;39mec2-instance-connect-harv…[0mstance Connect Host Key Harvesting.
+[[0;32m  OK  [0m] Finished [0;1;39mcloud-config.service[0m - Cloud-init: Config Stage.
+         Starting [0;1;39mhibinit-agent.service[0m - E…instance hibernation setup agent...
+[[0;32m  OK  [0m] Started [0;1;39mudisks2.service[0m - Disk Manager.
+[[0;32m  OK  [0m] Started [0;1;39mhibinit-agent.service[0m - EC2 instance hibernation setup agent.
+[[0;32m  OK  [0m] Started [0;1;39mModemManager.service[0m - Modem Manager.
+[[0;32m  OK  [0m] Finished [0;1;39mdpkg-db-backup.service[0m - Daily dpkg database backup service.
+[[0;32m  OK  [0m] Finished [0;1;39mlogrotate.service[0m - Rotate log files.
+
+Ubuntu 24.04.3 LTS ip-172-31-47-44 ttyS0
+
+ip-172-31-47-44 login: 2026/10/18 01:59:58Z: SSM Agent unable to acquire credentials: <error>no valid credentials could be retrieved for ec2 identity. Default Host Management Err: error calling RequestManagedInstanceRoleToken: AccessDeniedException: Systems Manager's instance management role is not configured for account: 202413277486
+	status code: 400, request id: 36e31d9f-8070-4e3b-a062-3436e3bec087</error>
+Cloud-init v. 25.2-0ubuntu1~24.04.1 running 'modules:final' at Sun, 18 Oct 2026 02:00:17 +0000. Up 69.96 seconds.
++ mkdir -p /tmp/agent
++ cat
++ cat
++ cat
++ cat
++ echo ===SETUP_START===
+===SETUP_START===
++ pip install --break-system-packages -q numpy
++ tail -5
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
++ python3 -m venv /tmp/baseline_venv
++ /tmp/baseline_venv/bin/pip install -q numpy opencv-python-headless
++ tail -10
++ cd /tmp/agent
++ python3 discover_envs.py
++ tee /tmp/agent/discover_output.txt
+===DISCOVER_ENVS_START===
+{
+  "baseline": {
+    "root": "/install-4x",
+    "lib_dir": "/install-4x/lib",
+    "cv2_so_matches": [],
+    "cv2_dir_matches": [],
+    "python_path": null,
+    "setup_vars_script": [
+      "/install-4x/bin/setup_vars_opencv4.sh"
+    ]
+  },
+  "cool": {
+    "root": "/install-cool",
+    "lib_dir": "/install-cool/lib",
+    "cv2_so_matches": [
+      "/install-cool/lib/python3.12/site-packages/cv2/python-3.12/cv2.cpython-312-aarch64-linux-gnu.so"
+    ],
+    "cv2_dir_matches": [
+      "/install-cool/lib/python3.12/site-packages/cv2"
+    ],
+    "python_path": "/install-cool/lib/python3.12/site-packages/cv2/python-3.12",
+    "setup_vars_script": [
+      "/install-cool/bin/setup_vars_opencv4.sh"
+    ]
+  }
+}
+===DISCOVER_ENVS_END===
++ python3 -c 'import json,re; txt=open("/tmp/agent/discover_output.txt").read(); start=txt.index("{"); end=txt.rindex("}")+1; json.dump(json.loads(txt[start:end]), open("/tmp/agent/build_envs.json","w"))'
++ echo ===SETUP_END===
+===SETUP_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/gd1cc3898cd734deec58d7abc94d50e033eaea2cbaec03868053462719d0755a4443be31c1477e89ddff3d3f7e097be5e3d93e0f3ee1e6a8586241d6f42cbb771_1280.jpg traffic
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "traffic",
+  "image_url": "https://pixabay.com/get/gd1cc3898cd734deec58d7abc94d50e033eaea2cbaec03868053462719d0755a4443be31c1477e89ddff3d3f7e097be5e3d93e0f3ee1e6a8586241d6f42cbb771_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/gd1cc3898cd734deec58d7abc94d50e033eaea2cbaec03868053462719d0755a4443be31c1477e89ddff3d3f7e097be5e3d93e0f3ee1e6a8586241d6f42cbb771_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.015386148099997854,
+        "std": 8.523642511932265e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.0898832081000009,
+        "std": 0.00020614067121708728,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.06033771250000086,
+        "std": 0.0015214127202223093,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.4514845044000012,
+        "std": 0.000828918628867657,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10016808709999907,
+        "std": 0.00024613572429994795,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.7172596601999999,
+    "total_seconds_std": 0.001764127200009029,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/gd1cc3898cd734deec58d7abc94d50e033eaea2cbaec03868053462719d0755a4443be31c1477e89ddff3d3f7e097be5e3d93e0f3ee1e6a8586241d6f42cbb771_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.019248061000000406,
+        "std": 6.638588167413967e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06230542870000022,
+        "std": 0.00014163666858605124,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.04214548409999708,
+        "std": 8.969814742630748e-05,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.4281685266000011,
+        "std": 0.0026287952756329884,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.1742188530000007,
+        "std": 0.002141933486121656,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.7260863533999995,
+    "total_seconds_std": 0.003395726350721611,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 0.9878434663333536,
+  "per_op_speedup": {
+    "resize_half": 0.7993609382263247,
+    "gaussian_blur_15": 1.4426224163031973,
+    "canny_edge": 1.4316530890199228,
+    "orb_detect_compute": 1.0544551417292334,
+    "warp_affine": 0.5749554963491733
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/ge6ff4d360e7f905c4ad1d16854be610e5692dcfd068996149fec88002bc6f2ffd1bf87cf8ff15470d83d5d5c4a21c0ba7a86bfd649f90f1eff980ba3be578b5a_1280.jpg factory
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "factory",
+  "image_url": "https://pixabay.com/get/ge6ff4d360e7f905c4ad1d16854be610e5692dcfd068996149fec88002bc6f2ffd1bf87cf8ff15470d83d5d5c4a21c0ba7a86bfd649f90f1eff980ba3be578b5a_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/ge6ff4d360e7f905c4ad1d16854be610e5692dcfd068996149fec88002bc6f2ffd1bf87cf8ff15470d83d5d5c4a21c0ba7a86bfd649f90f1eff980ba3be578b5a_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.01517550970000343,
+        "std": 0.00011694999634676572,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.09002134630000143,
+        "std": 0.00022608128669954222,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.05856467069999951,
+        "std": 0.00011474198436339119,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.4093363191000009,
+        "std": 0.0008413667145873817,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10087460880000094,
+        "std": 0.0002163231368777499,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.6739724546000062,
+    "total_seconds_std": 0.0009124962579545586,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/ge6ff4d360e7f905c4ad1d16854be610e5692dcfd068996149fec88002bc6f2ffd1bf87cf8ff15470d83d5d5c4a21c0ba7a86bfd649f90f1eff980ba3be578b5a_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.019244637499998874,
+        "std": 0.0001573922102044335,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06248060770000023,
+        "std": 0.0002801890853878199,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.04334526870000133,
+        "std": 0.00013488072745274093,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.40082087609999917,
+        "std": 0.0007712908846748126,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.17179044749999547,
+        "std": 0.00023913839128936347,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 0.6976818374999951,
+    "total_seconds_std": 0.0008795156854841191,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 0.9660169125443385,
+  "per_op_speedup": {
+    "resize_half": 0.7885578359168531,
+    "gaussian_blur_15": 1.4407885840713597,
+    "canny_edge": 1.3511202596374197,
+    "orb_detect_compute": 1.0212450087002884,
+    "warp_affine": 0.5871956809472983
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ timeout 200 python3 real_image_agent.py /tmp/agent/build_envs.json https://pixabay.com/get/gd5946282e23ee1ce4e96cffff55e5406fd2853cfaa8c15b3c8494e3a2d885494f89e789e6375bdafe631c3dc4148be8718d9d5bfe352e8226a3f466934d25c65_1280.jpg aerial
+===REAL_IMAGE_REPORT_START===
+{
+  "image_label": "aerial",
+  "image_url": "https://pixabay.com/get/gd5946282e23ee1ce4e96cffff55e5406fd2853cfaa8c15b3c8494e3a2d885494f89e789e6375bdafe631c3dc4148be8718d9d5bfe352e8226a3f466934d25c65_1280.jpg",
+  "baseline": {
+    "opencv_version": "5.0.0",
+    "image_url": "https://pixabay.com/get/gd5946282e23ee1ce4e96cffff55e5406fd2853cfaa8c15b3c8494e3a2d885494f89e789e6375bdafe631c3dc4148be8718d9d5bfe352e8226a3f466934d25c65_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.015224890700002902,
+        "std": 9.563076388316459e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.08995392559999402,
+        "std": 0.0001496286448625212,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.2308876868999988,
+        "std": 0.00018175159933084425,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 1.0991118475000037,
+        "std": 0.0003595460737822182,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.10113374949999354,
+        "std": 0.00017946913773649614,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 1.5363121001999929,
+    "total_seconds_std": 0.0004754473354596506,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "cool": {
+    "opencv_version": "4.14.0-pre",
+    "image_url": "https://pixabay.com/get/gd5946282e23ee1ce4e96cffff55e5406fd2853cfaa8c15b3c8494e3a2d885494f89e789e6375bdafe631c3dc4148be8718d9d5bfe352e8226a3f466934d25c65_1280.jpg",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "n_images": 20,
+    "repeats": 10,
+    "ops_seconds": {
+      "resize_half": {
+        "mean": 0.0191032999000015,
+        "std": 8.69620237915505e-05,
+        "n": 10
+      },
+      "gaussian_blur_15": {
+        "mean": 0.06244659829999364,
+        "std": 0.00019029541176961658,
+        "n": 10
+      },
+      "canny_edge": {
+        "mean": 0.15371247389999781,
+        "std": 0.0003638198585866004,
+        "n": 10
+      },
+      "orb_detect_compute": {
+        "mean": 0.7709223055000024,
+        "std": 0.0011279142369830521,
+        "n": 10
+      },
+      "warp_affine": {
+        "mean": 0.1721185292000058,
+        "std": 0.00026559361091288484,
+        "n": 10
+      }
+    },
+    "total_seconds_mean": 1.1783032068000012,
+    "total_seconds_std": 0.001232424488141675,
+    "cv2_num_threads_requested": -1,
+    "cv2_num_threads_actual": 2
+  },
+  "speedup_vs_baseline": 1.303834268916454,
+  "per_op_speedup": {
+    "resize_half": 0.7969770029104608,
+    "gaussian_blur_15": 1.4404936065188867,
+    "canny_edge": 1.5020751474614193,
+    "orb_detect_compute": 1.4257102689318935,
+    "warp_affine": 0.5875819992772174
+  }
+}
+===REAL_IMAGE_REPORT_END===
++ echo ===INSTANCE_SELF_SHUTDOWN===
+===INSTANCE_SELF_SHUTDOWN===
++ shutdown -h now
+ci-info: no authorized SSH keys fingerprints found for user ubuntu.
+[[0;32m  OK  [0m] Stopped [0;1;39munattended-upgrades.service[0m - Unattended Upgrades Shutdown.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-modprobe.slice[0m - Slice /system/modprobe.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgraphical.target[0m - Graphical Interface.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnss-lookup.target[0m - Host and Network Name Lookups.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtimers.target[0m - Timer Units.
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily-upgrade.timer[0m - …y apt upgrade and clean activities.
+[[0;32m  OK  [0m] Stopped [0;1;39mapt-daily.timer[0m - Daily apt download activities.
+[[0;32m  OK  [0m] Stopped [0;1;39mdpkg-db-backup.timer[0m - Daily dpkg database backup timer.
+[[0;32m  OK  [0m] Stopped [0;1;39me2scrub_all.timer[0m - Period…Metadata Check for All Filesystems.
+[[0;32m  OK  [0m] Stopped [0;1;39mfstrim.timer[0m - Discard unused filesystem blocks once a week.
+[[0;32m  OK  [0m] Stopped [0;1;39mfwupd-refresh.timer[0m - Refresh fwupd metadata regularly.
+[[0;32m  OK  [0m] Stopped [0;1;39mlogrotate.timer[0m - Daily rotation of log files.
+[[0;32m  OK  [0m] Stopped [0;1;39mman-db.timer[0m - Daily man-db regeneration.
+[[0;32m  OK  [0m] Stopped [0;1;39mmotd-news.timer[0m - Message of the Day.
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat-collect.timer[0m - Ru…y accounting tool every 10 minutes.
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat-summary.timer[0m - Ge… of yesterday's process accounting.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-clean.tim…[0my Cleanup of Temporary Directories.
+[[0;32m  OK  [0m] Stopped [0;1;39mupdate-notifier-download.t…[0mhat failed at package install time.
+[[0;32m  OK  [0m] Stopped [0;1;39mupdate-notifier-motd.timer[0m… a new version of Ubuntu available.
+[[0;32m  OK  [0m] Closed [0;1;39mcloud-init-hotplugd.socket[0m - cloud-init hotplug hook socket.
+[[0;32m  OK  [0m] Closed [0;1;39mlvm2-lvmpolld.socket[0m - LVM2 poll daemon socket.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-rfkill.socket[0m - Loa…ll Switch Status /dev/rfkill Watch.
+         Stopping [0;1;39macpid.service[0m - ACPI event daemon...
+         Stopping [0;1;39mblk-availability.service[0m - Availability of block devices...
+         Stopping [0;1;39mfinalrd.service[0m - Create …time dir for shutdown pivot root...
+         Stopping [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed...
+         Stopping [0;1;39mudisks2.service[0m - Disk Manager...
+[[0;32m  OK  [0m] Stopped [0;1;39macpid.service[0m - ACPI event daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-random-seed.service[0m - Load/Save OS Random Seed.
+[[0;32m  OK  [0m] Stopped [0;1;39mblk-availability.service[0m - Availability of block devices.
+[[0;32m  OK  [0m] Stopped [0;1;39mudisks2.service[0m - Disk Manager.
+Received signal 15 resulting in exit. Cause:
+  Filename: /usr/lib/python3.12/selectors.py
+  Function: select
+  Line number: 415
+    Filename: /usr/lib/python3.12/subprocess.py
+    Function: _communicate
+    Line number: 2115
+      Filename: /usr/lib/python3.12/subprocess.py
+      Function: communicate
+      Line number: 1209
+Received signal 15 resulting in exit. Cause:
+  Filename: /usr/lib/python3.12/selectors.py
+  Function: select
+  Line number: 415
+    Filename: /usr/lib/python3.12/subprocess.py
+    Function: _communicate
+    Line number: 2115
+      Filename: /usr/lib/python3.12/subprocess.py
+      Function: communicate
+      Line number: 1209
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-final.service[0m - Cloud-init: Final Stage.
+[[0;32m  OK  [0m] Stopped target [0;1;39mmulti-user.target[0m - Multi-User System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgetty.target[0m - Login Prompts.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtime-sync.target[0m - System Time Synchronized.
+         Stopping [0;1;39mModemManager.service[0m - Modem Manager...
+         Stopping [0;1;39mapport.service[0m - automatic crash report generation...
+         Stopping [0;1;39mchrony.service[0m - chrony, an NTP client/server...
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-config.service[0m - Cloud-init: Config Stage.
+[[0;32m  OK  [0m] Stopped target [0;1;39mcloud-config.target[0m - Cloud-config availability.
+         Stopping [0;1;39mcron.service[0m - Regular ba…ground program processing daemon...
+         Stopping [0;1;39mdocker.service[0m - Docker Application Container Engine...
+         Stopping [0;1;39mgetty@tty1.service[0m - Getty on tty1...
+         Stopping [0;1;39mirqbalance.service[0m - irqbalance daemon...
+         Stopping [0;1;39mnetworkd-dispatcher.servi…[0mcher daemon for systemd-networkd...
+[[0;32m  OK  [0m] Stopped [0;1;39mplymouth-quit.service[0m - Terminate Plymouth Boot Screen.
+         Stopping [0;1;39mrsyslog.service[0m - System Logging Service...
+         Stopping [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0...
+         Stopping [0;1;39msnap.amazon-ssm-agent.ama…[0mmazon-ssm-agent.amazon-ssm-agent...
+[[0;32m  OK  [0m] Stopped [0;1;39msnapd.seeded.service[0m - Wait until snapd is fully seeded.
+         Stopping [0;1;39msnapd.service[0m - Snap Daemon...
+[[0;32m  OK  [0m] Stopped [0;1;39msysstat.service[0m - Resets System Activity Logs.
+         Stopping [0;1;39msystemd-logind.service[0m - User Login Management...
+         Stopping [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup...
+[[0;32m  OK  [0m] Stopped [0;1;39mcron.service[0m - Regular background program processing daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mirqbalance.service[0m - irqbalance daemon.
+[[0;32m  OK  [0m] Stopped [0;1;39mnetworkd-dispatcher.servic…[0matcher daemon for systemd-networkd.
+[[0;32m  OK  [0m] Stopped [0;1;39mrsyslog.service[0m - System Logging Service.
+[[0;32m  OK  [0m] Stopped [0;1;39mserial-getty@ttyS0.service[0m - Serial Getty on ttyS0.
+[[0;32m  OK  [0m] Stopped [0;1;39mgetty@tty1.service[0m - Getty on tty1.
+[[0;32m  OK  [0m] Stopped [0;1;39mchrony.service[0m - chrony, an NTP client/server.
+[[0;32m  OK  [0m] Stopped [0;1;39mModemManager.service[0m - Modem Manager.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-logind.service[0m - User Login Management.
+[[0;32m  OK  [0m] Stopped [0;1;39mdocker.service[0m - Docker Application Container Engine.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-getty.slice[0m - Slice /system/getty.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-serial\x2dget…slice[0m - Slice /system/serial-getty.
+[[0;32m  OK  [0m] Stopped target [0;1;39mgetty-pre.target[0m - Preparation for Logins.
+         Stopping [0;1;39mcontainerd.service[0m - containerd container runtime...
+[[0;32m  OK  [0m] Stopped [0;1;39mplymouth-quit-wait.service[0m…old until boot process finishes up.
+         Starting [0;1;39mplymouth-switch-root-init…[0mll Plymouth To Jump To initramfs...
+         Stopping [0;1;39mpolkit.service[0m - Authorization Manager...
+         Stopping [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions...
+[[0;32m  OK  [0m] Stopped [0;1;39mcontainerd.service[0m - containerd container runtime.
+[[0;32m  OK  [0m] Stopped [0;1;39mubuntu-fan.service[0m - Ubuntu FAN network setup.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-user-sessions.service[0m - Permit User Sessions.
+[[0;32m  OK  [0m] Stopped [0;1;39mpolkit.service[0m - Authorization Manager.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork-online.target[0m - Network is Online.
+[[0;32m  OK  [0m] Finished [0;1;39mplymouth-switch-root-init…[0mTell Plymouth To Jump To initramfs.
+[[0;32m  OK  [0m] Stopped [0;1;39mapport.service[0m - automatic crash report generation.
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs.target[0m - Remote File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39mremote-fs-pre.targe…[0mreparation for Remote File Systems.
+[[0;32m  OK  [0m] Stopped [0;1;39mfinalrd.service[0m - Create f…untime dir for shutdown pivot root.
+[[0;32m  OK  [0m] Stopped [0;1;39msnapd.service[0m - Snap Daemon.
+[[0;32m  OK  [0m] Stopped target [0;1;39mtime-set.target[0m - System Time Set.
+[[0;1;31m*[0m[0;31m*    [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (5s / 1min)
+M[K[[0m[0;31m*     [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (5s / 1min)
+M[K[[0;1;31m*[0m[0;31m*    [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (6s / 1min)
+M[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (6s / 1min)
+M[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] Job snap.amazon-ssm-agent.amazon-ss…t.service/stop running (7s / 1min)
+M[K[[0;32m  OK  [0m] Stopped [0;1;39msnap.amazon-ssm-agent.amaz…[0m amazon-ssm-agent.amazon-ssm-agent.
+[K[[0;32m  OK  [0m] Stopped target [0;1;39mbasic.target[0m - Basic System.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork.target[0m - Network.
+[[0;32m  OK  [0m] Stopped target [0;1;39mpaths.target[0m - Path Units.
+[[0;32m  OK  [0m] Stopped [0;1;39macpid.path[0m - ACPI Events Check.
+[[0;32m  OK  [0m] Stopped target [0;1;39mslices.target[0m - Slice Units.
+[[0;32m  OK  [0m] Removed slice [0;1;39muser.slice[0m - User and Session Slice.
+[[0;32m  OK  [0m] Stopped target [0;1;39msockets.target[0m - Socket Units.
+[[0;32m  OK  [0m] Closed [0;1;39macpid.socket[0m - ACPID Listen Socket.
+[[0;32m  OK  [0m] Closed [0;1;39mdocker.socket[0m - Docker Socket for the API.
+[[0;32m  OK  [0m] Closed [0;1;39miscsid.socket[0m - Open-iSCSI iscsid Socket.
+[[0;32m  OK  [0m] Closed [0;1;39mlxd-installer.socket[0m - Helper to install lxd snap on demand.
+[[0;32m  OK  [0m] Closed [0;1;39msnapd.socket[0m - Socket activation for snappy daemon.
+[[0;32m  OK  [0m] Closed [0;1;39mssh.socket[0m - OpenBSD Secure Shell server socket.
+[[0;32m  OK  [0m] Closed [0;1;39msyslog.socket[0m - Syslog Socket.
+[[0;32m  OK  [0m] Closed [0;1;39muuidd.socket[0m - UUID daemon activation socket.
+[[0;32m  OK  [0m] Stopped target [0;1;39msysinit.target[0m - System Initialization.
+[[0;32m  OK  [0m] Stopped target [0;1;39mcryptsetup.target[0m - Local Encrypted Volumes.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-conso…[0mequests to Console Directory Watch.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-ask-password-wall.…[0md Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Stopped target [0;1;39mintegritysetup.targ…[0m Local Integrity Protected Volumes.
+[[0;32m  OK  [0m] Stopped target [0;1;39mswap.target[0m - Swaps.
+[[0;32m  OK  [0m] Stopped target [0;1;39mveritysetup.target[0m - Local Verity Protected Volumes.
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-init.service[0m - Cloud-init: Network Stage.
+         Stopping [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-networkd-wait-onli…[0m Wait for Network to be Configured.
+         Stopping [0;1;39msystemd-networkd.service[0m - Network Configuration...
+         Stopping [0;1;39msystemd-resolved.service[0m - Network Name Resolution...
+         Stopping [0;1;39msystemd-update-utmp.servi…[0mord System Boot/Shutdown in UTMP...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-binfmt.service[0m - Set Up Additional Binary Formats.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-networkd.service[0m - Network Configuration.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-resolved.service[0m - Network Name Resolution.
+[[0;32m  OK  [0m] Unset automount [0;1;39mproc-sys-fs-binfmt…[0mormats File System Automount Point.
+[[0;32m  OK  [0m] Stopped target [0;1;39mnetwork-pre.target[0m - Preparation for Network.
+[[0;32m  OK  [0m] Closed [0;1;39msystemd-networkd.socket[0m - Network Service Netlink Socket.
+[[0;32m  OK  [0m] Stopped [0;1;39mcloud-init-local.service[0m -…ud-init: Local Stage (pre-network).
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-sysctl.service[0m - Apply Kernel Variables.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-modules-load.service[0m - Load Kernel Modules.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-update-utmp.servic…[0mecord System Boot/Shutdown in UTMP.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup.ser…[0mate Volatile Files and Directories.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs.target[0m - Local File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39msnapd.mounts.target[0m - Mounted snaps.
+         Unmounting [0;1;39mboot-efi.mount[0m - /boot/efi...
+         Unmounting [0;1;39msnap-amazon\x2dssm\x2da…[0mamazon-ssm-agent, revision 13008...
+         Unmounting [0;1;39msnap-amazon\x2dssm\x2da…[0mamazon-ssm-agent, revision 13348...
+         Unmounting [0;1;39msnap-core22-2293.mount[0m …t unit for core22, revision 2293...
+         Unmounting [0;1;39msnap-core22-2412.mount[0m …t unit for core22, revision 2412...
+         Unmounting [0;1;39msnap-snapd-26869.mount[0m …t unit for snapd, revision 26869...
+         Unmounting [0;1;39msnap-snapd-27407.mount[0m …t unit for snapd, revision 27407...
+[[0;32m  OK  [0m] Unmounted [0;1;39mboot-efi.mount[0m - /boot/efi.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-amazon\x2dssm\x2dag…[0mr amazon-ssm-agent, revision 13008.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-amazon\x2dssm\x2dag…[0mr amazon-ssm-agent, revision 13348.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-core22-2293.mount[0m -…unt unit for core22, revision 2293.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-core22-2412.mount[0m -…unt unit for core22, revision 2412.
+         Unmounting [0;1;39mboot.mount[0m - /boot...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck@dev-disk-by\x…[0mm Check on /dev/disk/by-label/UEFI.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-snapd-26869.mount[0m -…unt unit for snapd, revision 26869.
+[[0;32m  OK  [0m] Unmounted [0;1;39mboot.mount[0m - /boot.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck@dev-disk-by\x…[0mm Check on /dev/disk/by-label/BOOT.
+[[0;32m  OK  [0m] Removed slice [0;1;39msystem-systemd\x2dfs…slice[0m - Slice /system/systemd-fsck.
+[[0;32m  OK  [0m] Unmounted [0;1;39msnap-snapd-27407.mount[0m -…unt unit for snapd, revision 27407.
+[[0;32m  OK  [0m] Stopped target [0;1;39mlocal-fs-pre.target[0m…Preparation for Local File Systems.
+[[0;32m  OK  [0m] Stopped target [0;1;39msnapd.mounts-pre.target[0m - Mounting snaps.
+[[0;32m  OK  [0m] Reached target [0;1;39mumount.target[0m - Unmount All Filesystems.
+         Stopping [0;1;39mlvm2-monitor.service[0m - Mo…ing dmeventd or progress polling...
+         Stopping [0;1;39mmultipathd.service[0m - Devi…pper Multipath Device Controller...
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mCreate Static Device Nodes in /dev.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-tmpfiles-setup-dev…[0mic Device Nodes in /dev gracefully.
+[[0;32m  OK  [0m] Stopped [0;1;39mmultipathd.service[0m - Devic…Mapper Multipath Device Controller.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-remount-fs.service[0m…mount Root and Kernel File Systems.
+[[0;32m  OK  [0m] Stopped [0;1;39msystemd-fsck-root.service[0m - File System Check on Root Device.
+[[0;32m  OK  [0m] Stopped [0;1;39mlvm2-monitor.service[0m - Mon…using dmeventd or progress polling.
+[[0;32m  OK  [0m] Reached target [0;1;39mshutdown.target[0m - System Shutdown.
+[[0;32m  OK  [0m] Reached target [0;1;39mfinal.target[0m - Late Shutdown Services.
+[[0;32m  OK  [0m] Finished [0;1;39msystemd-poweroff.service[0m - System Power Off.
+[[0;32m  OK  [0m] Reached target [0;1;39mpoweroff.target[0m - System Power Off.
+[  174.158785] reboot: Power down
