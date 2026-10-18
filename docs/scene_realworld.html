@@ -1,0 +1,221 @@
+<title>Scene — Real World Validation</title>
+<style>
+:root {
+  --bg: #0d0d0d;
+  --surface: #1a1a19;
+  --text-primary: #f0efec;
+  --text-secondary: #c3c2b7;
+  --muted: #898781;
+  --border: rgba(255,255,255,0.10);
+  --cool-c: #3987e5;
+  --good: #0ca30c;
+  --bad: #e34948;
+  --warn: #c98500;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.stage { width: 1920px; height: 1080px; position: relative; }
+
+.title-block {
+  position: absolute;
+  top: 56px; left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+.eyebrow {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.title { font-size: 44px; font-weight: 700; margin-top: 8px; }
+
+.grid {
+  position: absolute;
+  top: 160px; left: 110px; right: 110px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 14px;
+}
+.gcard {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease, border-color 0.45s ease;
+}
+.gcard.show { opacity: 1; transform: translateY(0); }
+.gcard img { width: 100%; height: 130px; object-fit: cover; display: block; }
+.gcard .label { font-size: 15px; font-weight: 600; text-align: center; padding: 8px 4px 2px; }
+.gcard .badge {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 2px 4px 10px;
+  font-variant-numeric: tabular-nums;
+}
+.gcard.faster { border-color: var(--good); }
+.gcard.faster .badge { color: var(--good); }
+.gcard.slower { border-color: var(--bad); }
+.gcard.slower .badge { color: var(--bad); }
+
+.summary {
+  position: absolute;
+  top: 460px; left: 50%;
+  transform: translateX(-50%);
+  width: 1400px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.summary.show { opacity: 1; }
+.summary-headline { font-size: 42px; font-weight: 700; color: var(--warn); }
+.summary-sub { font-size: 24px; color: var(--text-secondary); margin-top: 12px; }
+
+.oprow-wrap {
+  position: absolute;
+  top: 600px; left: 50%;
+  transform: translateX(-50%);
+  width: 1500px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.oprow-wrap.show { opacity: 1; }
+.oprow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.oprow:last-child { border-bottom: none; }
+.opname { width: 220px; font-size: 22px; font-weight: 600; }
+.optag {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+.optag.always-slower { background: rgba(227,73,72,0.18); color: var(--bad); }
+.optag.always-faster { background: rgba(10,163,10,0.18); color: var(--good); }
+.optag.swing { background: rgba(201,133,0,0.18); color: var(--warn); }
+.opdetail { font-size: 18px; color: var(--text-secondary); flex: 1; }
+
+.conclusion {
+  position: absolute;
+  bottom: 60px; left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 1500px;
+  text-align: center;
+  font-size: 27px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.conclusion.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.conclusion .hl { color: var(--cool-c); }
+</style>
+
+<div class="stage" id="stage">
+  <div class="title-block">
+    <div class="eyebrow">Real-World Validation</div>
+    <div class="title">Does the speedup hold on real photos?</div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="summary" id="summary">
+    <div class="summary-headline">Average: 1.06&times; &mdash; only 6% faster</div>
+    <div class="summary-sub">COOL was actually <b>slower</b> than baseline in 5 of 9 real images. Nowhere near the 36% from synthetic testing.</div>
+  </div>
+
+  <div class="oprow-wrap" id="opWrap">
+    <div class="oprow">
+      <div class="opname">Resize</div>
+      <div class="optag always-slower">Always slower</div>
+      <div class="opdetail">~20% slower, every single image &mdash; a real regression</div>
+    </div>
+    <div class="oprow">
+      <div class="opname">Warp affine</div>
+      <div class="optag always-slower">Always slower</div>
+      <div class="opdetail">~42% slower, every single image, barely varies with content</div>
+    </div>
+    <div class="oprow">
+      <div class="opname">Gaussian blur</div>
+      <div class="optag always-faster">Always faster</div>
+      <div class="opdetail">~43-97% faster, every single image &mdash; a real win</div>
+    </div>
+    <div class="oprow">
+      <div class="opname">Canny edges</div>
+      <div class="optag always-faster">Always faster</div>
+      <div class="opdetail">~15-61% faster, every single image &mdash; a real win</div>
+    </div>
+    <div class="oprow">
+      <div class="opname">ORB features</div>
+      <div class="optag swing">The swing factor</div>
+      <div class="opdetail">0.93&times; to 1.43&times; &mdash; tracks how many distinct features the image has</div>
+    </div>
+  </div>
+
+  <div class="conclusion" id="conclusion">
+    The claim isn't false &mdash; it's <span class="hl">incomplete</span>. Whether COOL helps depends on what you're actually processing.
+  </div>
+</div>
+
+<script>
+var images = [
+  { label: "Aerial", file: "thumb_aerial.jpg", speedup: 1.304 },
+  { label: "Medical", file: "thumb_medical.jpg", speedup: 1.177 },
+  { label: "Retail", file: "thumb_retail.jpg", speedup: 1.198 },
+  { label: "Sports", file: "thumb_sports.jpg", speedup: 1.068 },
+  { label: "Traffic", file: "thumb_traffic.jpg", speedup: 0.988 },
+  { label: "Factory", file: "thumb_factory.jpg", speedup: 0.966 },
+  { label: "Agriculture", file: "thumb_agriculture.jpg", speedup: 0.948 },
+  { label: "Plain", file: "thumb_plain.jpg", speedup: 0.962 },
+  { label: "Forest", file: "thumb_forest.jpg", speedup: 0.909 },
+];
+
+var grid = document.getElementById("grid");
+var cards = images.map(function (img) {
+  var el = document.createElement("div");
+  var faster = img.speedup >= 1.0;
+  el.className = "gcard " + (faster ? "faster" : "slower");
+  el.innerHTML =
+    '<img src="' + img.file + '">' +
+    '<div class="label">' + img.label + '</div>' +
+    '<div class="badge">' + img.speedup.toFixed(2) + '&times;</div>';
+  grid.appendChild(el);
+  return el;
+});
+
+var beats = [
+  { t: 10.0, el: document.getElementById("summary") },
+  { t: 17.0, el: document.getElementById("opWrap") },
+  { t: 40.0, el: document.getElementById("conclusion") },
+];
+
+var start = performance.now();
+function tick() {
+  var now = (performance.now() - start) / 1000;
+  cards.forEach(function (c, i) {
+    if (now >= i * 0.5) c.classList.add("show");
+  });
+  beats.forEach(function (b) {
+    if (now >= b.t) b.el.classList.add("show");
+  });
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
