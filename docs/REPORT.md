@@ -197,6 +197,12 @@ revealed.
 
 ## Limitations / honest caveats
 
+- The comparison is between products, not between versions of one library: the
+  baseline is pip `opencv-python-headless` 5.0.0, while COOL's AMI ships a build based on
+  OpenCV 4.14.0-pre. Some of the per-op differences may come from the version gap
+  rather than COOL's Graviton tuning. This is the comparison a developer actually faces
+  ("pip install OpenCV, or pay for COOL?"), and it matches the basis COOL's publisher uses.
+
 - Sample size is reasonable (25 synthetic measurements, 9 real-image measurements, one
   stress sweep) but still not large enough for formal statistical confidence intervals.
 - Two instance sizes tested (`c8g.large`, `c8g.xlarge`); COOL's own Marketplace

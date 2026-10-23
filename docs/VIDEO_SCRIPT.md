@@ -115,5 +115,9 @@ headline finding. Suggested read (edit freely, keep the numbers exact):
 - ✅ Hook, what-it-does, live-run narration, synthetic results recap, stress-test
   narration, and close — all already recorded (see `clips/final_cut_v1.mp4` for the
   prior assembly; needs re-editing with the new segment inserted).
-- ⬜ **New real-world validation segment (the [3:30–4:15] block above) still needs to
-  be recorded** — this is the only new audio/facecam needed for the updated script.
+- ✅ v2 assembled (`clips/final_cut_v2_novo.mp4`, 3:43): the live-run and stress-test
+  b-roll now use the animated `scene2_race` / `scene3_stress` scenes instead of a static
+  dashboard, and the real-world scene is inserted before the stress test as a silent
+  27s visual (its on-screen text carries the finding). Audio normalised to about -16 LUFS.
+- ⬜ Optional: record the real-world narration (the [3:30–4:15] block above), then run
+  `bash SUBMIT/add_narration.sh <recording>` to produce `clips/final_cut_v2.mp4`.

@@ -9,3 +9,5 @@ venv/
 benchmarks/raw/
 *.log
 .DS_Store
+SUBMIT/
+clips/
