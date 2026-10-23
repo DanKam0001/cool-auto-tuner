@@ -30,10 +30,14 @@ ID=$(aws ec2 run-instances \
   --query 'Instances[0].InstanceId' --output text)
 echo "launched $ID ($TYPE, $REGION)"
 
+instance_state() {
+  aws ec2 describe-instances --region "$REGION" --instance-ids "$ID" \
+    --query 'Reservations[0].Instances[0].State.Name' --output text 2>/dev/null || echo unknown
+}
+
 # Hard backstop: terminate it ourselves if it outlives MAX_MINUTES.
 cleanup() {
-  state=$(aws ec2 describe-instances --region "$REGION" --instance-ids "$ID" \
-    --query 'Reservations[0].Instances[0].State.Name' --output text 2>/dev/null || echo unknown)
+  state=$(instance_state)
   if [ "$state" != "terminated" ] && [ "$state" != "shutting-down" ]; then
     echo "terminating $ID (state: $state)"
     aws ec2 terminate-instances --region "$REGION" --instance-ids "$ID" >/dev/null
@@ -43,21 +47,24 @@ trap cleanup EXIT
 
 deadline=$(( $(date +%s) + MAX_MINUTES * 60 ))
 while :; do
-  state=$(aws ec2 describe-instances --region "$REGION" --instance-ids "$ID" \
-    --query 'Reservations[0].Instances[0].State.Name' --output text)
+  state=$(instance_state)
   echo "$(date +%H:%M:%S) $state"
   case "$state" in shutting-down|terminated) break ;; esac
   if [ "$(date +%s)" -ge "$deadline" ]; then echo "timed out after ${MAX_MINUTES}m"; break; fi
   sleep 30
 done
 
-# The console log stays readable for a while after termination.
+# EC2 publishes the full console log a few minutes after the instance terminates
+# (while it runs, the API mostly returns a stale boot-time snapshot). Poll until the
+# agent's end-of-report marker shows up.
 out="$OUT_DIR/${ID}_$(basename "$USERDATA" .sh).log"
-for _ in 1 2 3 4 5 6 7 8 9 10; do
-  aws ec2 get-console-output --region "$REGION" --instance-id "$ID" --latest \
+for _ in $(seq 1 40); do
+  aws ec2 get-console-output --region "$REGION" --instance-id "$ID" \
     --query Output --output text > "$out" 2>/dev/null || true
-  [ -s "$out" ] && [ "$(cat "$out")" != "None" ] && break
+  if grep -q "===AGENT_REPORT_END===" "$out"; then break; fi
+  echo "$(date +%H:%M:%S) waiting for console log..."
   sleep 30
 done
 echo "console output saved to $out"
-grep -E "TARGET_MET|TARGET_NOT_MET|speedup" "$out" | tail -20 || true
+grep -q "===AGENT_REPORT_END===" "$out" || echo "warning: agent report not found in console log"
+grep -oE '"(overall_verdict|verdict|resolution|_speedup_vs_baseline)": ("[^"]*"|[0-9.]+)' "$out" | tail -20 || true

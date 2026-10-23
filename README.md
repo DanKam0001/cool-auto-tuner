@@ -57,7 +57,7 @@ terminates it anyway after `MAX_MINUTES` as a backstop, and saves the console ou
   Pixabay download URLs in these scripts were temporary CDN links and will have expired;
   swap in your own image URLs)
 
-A standard run takes about 10-15 minutes on a `c8g.large`. The IAM permissions used
+A standard run takes about 5 minutes on a `c8g.large`, plus a few minutes for EC2 to publish the console log. Two fresh runs through `launch.sh` on 23 Oct 2026 reproduced the headline result: 1.35x/1.35x/1.35x and 1.30x/1.36x/1.35x at 480p/1080p/4K ([`benchmarks/launcher_check_2026-10-23_a.log`](benchmarks/launcher_check_2026-10-23_a.log), [`_b.log`](benchmarks/launcher_check_2026-10-23_b.log)). The IAM permissions used
 are in [`infra/iam-policy.json`](infra/iam-policy.json). Raw results from every run are
 in [`benchmarks/`](benchmarks/).
 
